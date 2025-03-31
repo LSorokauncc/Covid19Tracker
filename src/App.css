@@ -8,3 +8,193 @@ Main blue color replacement (header/footer/container backgrounds): #011822
 Main dark blue color replacement (backgrounds/inner containers/nav bar selected page): #122D3A --SAME AS LIGHT MODE--
 Text: #A1D5EB
 */
+
+:root {
+    /* Light Mode Colors */
+    --color-light-bg: #A1D5EB;         
+    --color-light-inner-bg: #122D3A;   
+    --color-light-text: #122D3A;
+  
+    /* Dark Mode Colors */
+    --color-dark-bg: #011822;          
+    --color-dark-inner-bg: #122D3A;    
+    --color-dark-text: #A1D5EB;        
+  }
+
+/* Base styles (needs more)*/  
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-light-bg);
+    color: var(--color-dark-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+
+/* Header (not sure)*/   
+
+.header-bar {
+    background-color: var(--color-light-bg);
+    color: var(--color-light-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+  
+.left-section h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+
+
+/* Navbar stays right-aligned */
+
+.tab-link {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover*/
+  .tab-link:hover {
+    background-color: var(--color-light-inner-bg);
+  }
+  
+  /* Active tab highlighting */
+  .tab-link.active {
+    background-color: var(--color-light-inner-bg);
+    font-weight: bold;
+    color: white;
+  }
+  
+
+
+/* HomePage: Quick Facts (needs fixing) */
+
+.home-content {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+.quick-facts-box {
+    background-color: var(--color-light-inner-bg);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  
+.fact-card {
+    margin-bottom: 1rem;
+}
+  
+.label {
+    font-weight: bold;
+}
+  
+.value {
+    font-size: 1.2rem;
+  }
+
+
+/* Map container */
+.map-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 650px;
+    min-width: 0; 
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    
+}
+  
+  
+/* Theme toggle for darkmode (need fixing/update) */
+.theme-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 10px;
+  }
+  
+.theme-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+  
+.theme-icon.active {
+    opacity: 1;
+  }
+  
+
+
+
+/*Search containers  */
+  
+
+
+
+/* Wiki containers  */
+
+
+
+
+/*Compare containers*/
+
+
+
+
+/* Footer */
+.footer {
+    background-color: var(--color-light-bg);
+    padding: 1rem;
+    text-align: center;
+  }
+  
+.footer-left {
+    font-size: 0.9rem;
+  }
+  
+/* Darkmode */
+
+
+/* Dark Mode Overrides */
+body.dark-mode {
+    background-color: var(--color-dark-bg);
+    color: var(--color-dark-text);
+  }
+  
+  body.dark-mode .header-bar,
+  body.dark-mode .footer {
+    background-color: var(--color-dark-bg);
+    color: var(--color-dark-text);
+  }
+  
+  body.dark-mode .tab-link {
+    color: var(--color-dark-text);
+  }
+  
+  body.dark-mode .tab-link.active {
+    background-color: var(--color-dark-inner-bg);
+    color: white;
+  }
+  
+  body.dark-mode .quick-facts-box,
+  body.dark-mode .fact-card {
+    background-color: var(--color-dark-inner-bg);
+    color: var(--color-dark-text);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+  }

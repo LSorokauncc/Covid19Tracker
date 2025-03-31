@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+
 
 const Header = ({ setActiveTab }) => {
   const handleTabClick = (tab) => {
@@ -9,11 +9,11 @@ const Header = ({ setActiveTab }) => {
   return (
     <header className="header-bar">
       <div className="left-section">
-        <img 
+        {/*<img 
           src="https://img.icons8.com/emoji/48/doctor-emoji.png" 
           alt="Doctor Icon" 
           className="icon" 
-        />
+        />*/}
         <h1>COVID-19 Tracker</h1>
       </div>
 

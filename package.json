@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "mapbox-gl": "^3.10.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "5.0.1",
-    "react-router-dom": "^6.0.0"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.0.0",
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,7 +25,8 @@
   "bugs": {
     "url": "https://github.com/LSorokauncc/Covid19Tracker/issues"
   },
-  "homepage": "https://github.com/LSorokauncc/Covid19Tracker#readme",
+  "homepage": "/LSorokauncc/Covid19Tracker",
+
   "browserslist": {
     "production": [
       ">0.2%",
