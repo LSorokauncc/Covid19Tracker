@@ -203,7 +203,7 @@ body.dark-mode .wiki-container h2 {
   justify-content: center;
 }
 
-.quick-facts-box {
+/* .quick-facts-box {
   min-width: 300px;
   max-width: 400px;
   flex-shrink: 0;
@@ -212,20 +212,21 @@ body.dark-mode .wiki-container h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
-body.light-mode .quick-facts-box {
+.quick-facts-box {
   background-color: var(--color-light-inner-bg);
   color: white;
   border: 2px solid white;
 }
 
-body.light-mode .quick-facts-box h2 {
+.quick-facts-box h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
-body.light-mode .fact-card {
+.fact-card {
   background-color: var(--color-light-inner-bg);
   border: 2px solid white;
   border-radius: 15px;
@@ -235,14 +236,14 @@ body.light-mode .fact-card {
   min-width: 250px;
 }
 
-body.light-mode .label {
+.label {
   color: white;
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 0.25rem;
 }
 
-body.light-mode .value {
+.value {
   color: var(--color-light-bg);
   font-size: 1.6rem;
   font-weight: bold;
@@ -258,6 +259,7 @@ body.dark-mode .quick-facts-box {
 body.dark-mode .quick-facts-box h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 body.dark-mode .fact-card {
