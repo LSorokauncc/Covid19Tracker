@@ -23,15 +23,14 @@ function App() {
   
     return (
       <>
-        <Header setActiveTab={setActiveTab} />
+        <Header setActiveTab={setActiveTab} activeTab={activeTab} />
 
         {activeTab === "home" && <HomePage />}
         {activeTab === "search" && <Search />}
         {activeTab === "wiki" && <Wiki />}
         {activeTab === "compare" && <Compare />}
 
-        <Footer />
-        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Footer darkMode={darkMode} setDarkMode={setDarkMode} />        
       </>
     );
   }

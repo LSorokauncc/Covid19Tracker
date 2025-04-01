@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const DarkModeToggle = ({ darkMode, setDarkMode }) => {
-
-    return (
-        <div className="theme-toggle"> 
-            <span
-                className={`theme-icon ${!darkMode ? 'active' : ''}`}
-                onClick={() => setDarkMode(false)}
-                title="Light Mode"
+  return (
+    <div className="theme-toggle">
+      <span
+        className={`theme-icon ${!darkMode ? 'active' : ''}`}
+        onClick={() => setDarkMode(false)}
+        title="Light Mode"
       >
         ☀️
       </span>
