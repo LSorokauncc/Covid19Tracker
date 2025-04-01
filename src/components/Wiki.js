@@ -1,12 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Wiki = () => {
-  const [expandedBox, setExpandedBox] = useState(null);
-
-  const toggleReadMore = (index) => {
-    setExpandedBox(expandedBox === index ? null : index);
-  };
-
   const infoData = [
     {
       title: 'What is COVID19?',
@@ -30,6 +24,11 @@ const Wiki = () => {
     },
   ];
 
+  const handleReadMore = (item) => {
+    localStorage.setItem("wikiDetail", JSON.stringify(item));
+    window.location.href = "/detail";
+  };
+
   return (
     <div className="wiki-container">
       <h2>WIKI</h2>
@@ -37,10 +36,8 @@ const Wiki = () => {
         {infoData.map((item, index) => (
           <div key={index} className="info-box">
             <h3>{item.title}</h3>
-            <p>{expandedBox === index ? item.full : item.short}</p>
-            <button onClick={() => toggleReadMore(index)}>
-              {expandedBox === index ? 'Read Less' : 'Read more...'}
-            </button>
+            <p>{item.short}</p>
+            <button onClick={() => handleReadMore(item)}>Read more...</button>
           </div>
         ))}
       </div>
