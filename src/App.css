@@ -106,7 +106,68 @@ body.dark-mode .footer {
 
 /*Compare containers*/
 
+/* General container styles */
+.compare-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
 
+/* Table container styles */
+.table-container {
+  max-height: 400px; /* Set a maximum height for the table container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ddd; /* Optional: Add a border around the table container */
+  border-radius: 10px; /* Rounded corners for the container */
+  background-color: #A1D5EB; /* Updated background color for the container */
+  padding: 20px; /* Add padding to show some of the background */
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem; /* Make the text smaller */
+}
+
+.stats-table th,
+.stats-table td {
+  border: 1px solid #ddd;
+  padding: 8px; /* Reduce padding to make the table more compact */
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* Styling for the "Confirmed" column */
+.stats-table td:nth-child(2) {
+  color: #5A9D64; /* Green color for "Confirmed" statistics */
+}
+
+/* Styling for the "Deceased" column */
+.stats-table td:nth-child(4) {
+  color: #BE3537; /* Red color for "Deceased" statistics */
+}
+
+/* Styling for the "Tests" column */
+.stats-table td:nth-child(6) {
+  color: #C8CA8C; /* Olive color for "Tests" statistics */
+}
+
+.stats-table th {
+  background-color: #122d3a; /* Dark blue for heading bubbles */
+  color: white;
+  border-radius: 5px; /* Rounded corners for each heading */
+  padding: 12px; /* Adjust padding for smaller text */
+}
+
+.stats-table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray for even rows */
+  color: black;
+}
+
+.stats-table tr:hover {
+  background-color: #e9ecef; /* Highlight row on hover */
+}
 
 
 /* Footer */
