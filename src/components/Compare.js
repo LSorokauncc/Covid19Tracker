@@ -34,12 +34,6 @@ const Compare = () => {
 
     return (
       <table className="compare-stats-table">
-        <thead>
-          <tr>
-            <th>Statistic</th>
-            <th>Value</th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td>Confirmed</td>
@@ -95,7 +89,7 @@ const Compare = () => {
       <h2>COMPARE</h2>
       <div className="compare-tables">
         <div className="compare-table">
-          <h3>Left Continent</h3>
+          <h3>Continent</h3>
           <div className="continent-list">
             {continentStats.map((stat, index) => (
               <button
@@ -111,7 +105,7 @@ const Compare = () => {
         </div>
 
         <div className="compare-table">
-          <h3>Right Continent</h3>
+          <h3>Continent</h3>
           <div className="continent-list">
             {continentStats.map((stat, index) => (
               <button
