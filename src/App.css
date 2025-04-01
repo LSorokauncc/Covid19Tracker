@@ -1,200 +1,255 @@
-/* colors for the website:
-light mode:
-Main light blue color (header/footer/container backgrounds): #A1D5EB
-Main dark blue color (backgrounds/inner containers/nav bar selected page): #122D3A
-
-dark mode:
-Main blue color replacement (header/footer/container backgrounds): #011822
-Main dark blue color replacement (backgrounds/inner containers/nav bar selected page): #122D3A --SAME AS LIGHT MODE--
-Text: #A1D5EB
-*/
-
 :root {
-    /* Light Mode Colors */
-    --color-light-bg: #A1D5EB;         
-    --color-light-inner-bg: #122D3A;   
-    --color-light-text: #122D3A;
-  
-    /* Dark Mode Colors */
-    --color-dark-bg: #011822;          
-    --color-dark-inner-bg: #122D3A;    
-    --color-dark-text: #A1D5EB;        
-  }
+  /* Light Mode Colors */
+  --color-light-bg: #A1D5EB;
+  --color-light-inner-bg: #122D3A;
+  --color-light-text: #122D3A;
 
-/* Base styles (needs more)*/  
+  /* Dark Mode Colors */
+  --color-dark-bg: #011822;
+  --color-dark-inner-bg: #122D3A;
+  --color-dark-text: #A1D5EB;
+}
 
+
+/* Base Styles */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: var(--color-light-bg);
-    color: var(--color-dark-text);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 
-/* Header (not sure)*/   
-
+/* Header */
 .header-bar {
-    background-color: var(--color-light-bg);
-    color: var(--color-light-text);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    padding: 1rem;
-  }
-  
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.doctor-icon {
+  width: 50px;
+  height: auto;
+  margin-right: 1rem;
+}
+
 .left-section h1 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
 
 
-/* Navbar stays right-aligned */
+/* Navbar */
+.nav-tabs {
+  display: flex;
+  gap: 1rem;
+}
 
 .tab-link {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Hover*/
-  .tab-link:hover {
-    background-color: var(--color-light-inner-bg);
-  }
-  
-  /* Active tab highlighting */
-  .tab-link.active {
-    background-color: var(--color-light-inner-bg);
-    font-weight: bold;
-    color: white;
-  }
-  
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  color: var(--color-light-text);
+}
+
+.tab-link:hover {
+  background-color: var(--color-light-inner-bg);
+  color: white;
+}
+
+.tab-link.active {
+  background-color: var(--color-light-inner-bg);
+  font-weight: bold;
+  color: white;
+}
 
 
-/* HomePage: Quick Facts (needs fixing) */
-
+/* HomePage: Quick Facts */
 .home-content {
-    display: flex;
-    gap: 2rem;
-    padding: 2rem;
-  }
-  
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+}
+
 .quick-facts-box {
-    background-color: var(--color-light-inner-bg);
-    color: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-  }
-  
+  background-color: var(--color-light-inner-bg);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
 .fact-card {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
-  
+
 .label {
-    font-weight: bold;
+  font-weight: bold;
 }
-  
+
 .value {
-    font-size: 1.2rem;
-  }
-
-
-/* Map container */
-.map-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    height: 650px;
-    min-width: 0; 
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    
+  font-size: 1.2rem;
 }
-  
-  
-/* Theme toggle for darkmode (need fixing/update) */
-.theme-toggle {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    display: flex;
-    gap: 10px;
-  }
-  
-.theme-icon {
-    cursor: pointer;
-    font-size: 1.5rem;
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-  }
-  
-.theme-icon.active {
-    opacity: 1;
-  }
-  
 
 
+/* Map Container */
+.map-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 650px;
+  min-width: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
 
-/*Search containers  */
-  
 
+/* Wiki Section */
+.wiki-container {
+  padding: 2rem;
+  background-color: var(--color-light-inner-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
 
+.wiki-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
 
-/* Wiki containers  */
+.wiki-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
 
+.wiki-card {
+  background-color: #A1D5EB;
+  color: #122D3A;
+  padding: 1.5rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
 
+.wiki-card h3 {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
 
+.wiki-card button {
+  align-self: center;
+  margin-top: 1rem;
+  background-color: #122D3A;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 0.4rem 1rem;
+  font-style: italic;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-/*Compare containers*/
-
-
+.wiki-card button:hover {
+  background-color: #0d1f2b;
+}
 
 
 /* Footer */
 .footer {
-    background-color: var(--color-light-bg);
-    padding: 1rem;
-    text-align: center;
-  }
-  
+  background-color: var(--color-light-bg);
+  padding: 1rem 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .footer-left {
-    font-size: 0.9rem;
-  }
-  
-/* Darkmode */
+  font-size: 0.9rem;
+}
+
+
+/* Theme Toggle (inside footer) */
+.theme-toggle {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.theme-icon.active {
+  opacity: 1;
+}
 
 
 /* Dark Mode Overrides */
 body.dark-mode {
-    background-color: var(--color-dark-bg);
-    color: var(--color-dark-text);
-  }
-  
-  body.dark-mode .header-bar,
-  body.dark-mode .footer {
-    background-color: var(--color-dark-bg);
-    color: var(--color-dark-text);
-  }
-  
-  body.dark-mode .tab-link {
-    color: var(--color-dark-text);
-  }
-  
-  body.dark-mode .tab-link.active {
-    background-color: var(--color-dark-inner-bg);
-    color: white;
-  }
-  
-  body.dark-mode .quick-facts-box,
-  body.dark-mode .fact-card {
-    background-color: var(--color-dark-inner-bg);
-    color: var(--color-dark-text);
-    border-radius: 8px;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-  }
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+body.dark-mode .header-bar,
+body.dark-mode .footer {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+body.dark-mode .tab-link {
+  color: var(--color-dark-text);
+}
+
+body.dark-mode .tab-link.active {
+  background-color: var(--color-dark-inner-bg);
+  color: white;
+}
+
+body.dark-mode .quick-facts-box,
+body.dark-mode .fact-card {
+  background-color: var(--color-dark-inner-bg);
+  color: var(--color-dark-text);
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+body.dark-mode .wiki-container {
+  background-color: var(--color-dark-inner-bg);
+  color: var(--color-dark-text);
+}
+
+body.dark-mode .wiki-card {
+  background-color: #011822;
+  color: #A1D5EB;
+}
+
+body.dark-mode .wiki-card button {
+  background-color: #A1D5EB;
+  color: #011822;
+}
