@@ -9,10 +9,9 @@ import Wiki from "./components/Wiki";
 import Search from "./components/Search"; 
 import Compare from "./components/Compare"; 
 import DarkModeToggle from "./components/DarkMode"; 
-import WikiDetail from "./components/WikiDetail"; // ← Add this
+import WikiDetail from "./components/WikiDetail"; 
 
 
-//Nav Bar
 function App() {
   const [activeTab, setActiveTab] = useState("home");
   const [darkMode, setDarkMode] = useState(false);
@@ -21,21 +20,31 @@ function App() {
     document.body.className = darkMode ? "dark-mode" : "";
   }, [darkMode]);
 
+  // Handle separate detail page view
   if (window.location.pathname === "/detail") {
-    return <WikiDetail />;
+    return (
+      <div className="page-wrapper">
+        <div className="content-wrapper">
+          <WikiDetail />
+        </div>
+        <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
+      </div>
+    );
   }
 
   return (
-    <>
+    <div className="page-wrapper">
       <Header setActiveTab={setActiveTab} activeTab={activeTab} />
 
-      {activeTab === "home" && <HomePage />}
-      {activeTab === "search" && <Search />}
-      {activeTab === "wiki" && <Wiki />}
-      {activeTab === "compare" && <Compare />}
+      <div className="content-wrapper">
+        {activeTab === "home" && <HomePage />}
+        {activeTab === "search" && <Search />}
+        {activeTab === "wiki" && <Wiki />}
+        {activeTab === "compare" && <Compare />}
+      </div>
 
       <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
-    </>
+    </div>
   );
 }
 
