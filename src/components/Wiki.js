@@ -4,28 +4,32 @@ const Wiki = () => {
   const infoData = [
     {
       title: 'What is COVID19?',
-      short: '2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. It has since spread worldwide, leading to an ongoing pandemic.',
+      short:
+        '2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. It has since spread worldwide, leading to an ongoing pandemic.',
     },
     {
       title: 'How do I get infected?',
-      short: 'The virus spreads mainly when an infected person is in close contact with another person. Small droplets and aerosols containing the virus can spread from an infected person\'s nose and mouth as they breathe, cough, sneeze, sing, or speak.',
+      short:
+        'The virus spreads mainly when an infected person is in close contact with another person. Small droplets and aerosols containing the virus can spread from an infected person\'s nose and mouth as they breathe, cough, sneeze, sing, or speak.',
     },
     {
       title: 'How do I get tested?',
-      short: 'The best way to get a coronavirus test is to contact your health care provider. You may also visit your state or local health department\'s website to look for the latest local information on testing.',
+      short:
+        'The best way to get a coronavirus test is to contact your health care provider. You may also visit your state or local health department\'s website to look for the latest local information on testing.',
     },
     {
       title: 'How can I protect myself?',
-      short: '1. The CDC recommends that people wash hands often with soap and water for at least 20 seconds, especially after going to the toilet or when hands are visibly dirty.',
+      short:
+        '1. The CDC recommends that people wash hands often with soap and water for at least 20 seconds, especially after going to the toilet or when hands are visibly dirty.',
     },
   ];
 
   const handleReadMore = (item) => {
-    localStorage.setItem("wikiDetail", JSON.stringify(item));
-    window.location.href = "/detail";
+    localStorage.setItem('wikiDetail', JSON.stringify(item));
+    window.location.href = '/detail';
   };
 
-  // === Styles ===
+  // === Inline Styles ===
   const containerStyle = {
     padding: '2rem',
     minHeight: '100vh',
@@ -38,12 +42,13 @@ const Wiki = () => {
     fontSize: '3rem',
     marginBottom: '2.5rem',
     textAlign: 'center',
-    color: 'inherit',
+    fontFamily: 'var(--font-main)',
+    color: 'white', // ✅ Force white in both modes
   };
 
   const gridStyle = {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr', // two columns
+    gridTemplateColumns: '1fr 1fr',
     gap: '2rem',
     maxWidth: '1000px',
     margin: '0 auto',
@@ -54,9 +59,9 @@ const Wiki = () => {
     padding: '1.5rem 2rem',
     boxShadow: '0 6px 12px rgba(0, 0, 0, 0.2)',
     textAlign: 'left',
-    border: '1px solid #ffffff55',
-    backgroundColor: 'var(--color-light-bg)', // Same as header/footer
-    color: 'var(--color-light-text)',
+    border: '1px solid var(--box-border-color)',
+    backgroundColor: 'var(--box-bg-color)', // auto light/dark match
+    color: 'var(--box-text-color)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -86,7 +91,7 @@ const Wiki = () => {
     fontWeight: 600,
     letterSpacing: '0.5px',
     cursor: 'pointer',
-    alignSelf: 'start',
+    alignSelf: 'center',
     transition: 'background-color 0.3s',
   };
 
@@ -101,8 +106,8 @@ const Wiki = () => {
             <button
               style={buttonStyle}
               onClick={() => handleReadMore(item)}
-              onMouseOver={e => e.target.style.backgroundColor = '#1d1d1d'}
-              onMouseOut={e => e.target.style.backgroundColor = '#2f2f2f'}
+              onMouseOver={(e) => (e.target.style.backgroundColor = '#1d1d1d')}
+              onMouseOut={(e) => (e.target.style.backgroundColor = '#2f2f2f')}
             >
               Read more...
             </button>
