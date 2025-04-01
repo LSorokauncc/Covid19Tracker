@@ -88,128 +88,227 @@ body.dark-mode .footer {
 }
 
 .theme-icon.active {
-    opacity: 1;
-  }
-  
+  opacity: 1;
+}
 
+/* NAVIGATION TABS  */
+.tab-link {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
 
+.tab-link:hover {
+  background-color: var(--color-light-inner-bg);
+}
 
-/*Search containers  */
-  
+.tab-link.active {
+  background-color: var(--color-light-inner-bg);
+  font-weight: bold;
+  color: white;
+}
 
+body.dark-mode .tab-link {
+  color: var(--color-dark-text);
+}
 
+body.dark-mode .tab-link.active {
+  background-color: var(--color-dark-inner-bg);
+  color: white;
+}
 
-/* Wiki containers  */
+/*  HOMEPAGE QUICK FACTS  */
+.home-content {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
 
-
-
-
-/*Compare containers*/
-
-/* General container styles */
-.compare-container {
+.quick-facts-box {
+  min-width: 300px;
+  max-width: 400px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  align-items: center;
 }
 
-/* Table container styles */
-.table-container {
-  max-height: 400px; /* Set a maximum height for the table container */
-  overflow-y: auto; /* Enable vertical scrolling */
-  border: 1px solid #ddd; /* Optional: Add a border around the table container */
-  border-radius: 10px; /* Rounded corners for the container */
-  background-color: #A1D5EB; /* Updated background color for the container */
-  padding: 20px; /* Add padding to show some of the background */
-}
-
-.stats-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem; /* Make the text smaller */
-}
-
-.stats-table th,
-.stats-table td {
-  border: 1px solid #ddd;
-  padding: 8px; /* Reduce padding to make the table more compact */
-  text-align: center;
+/* Light Mode */
+body.light-mode .quick-facts-box {
+  background-color: var(--color-light-inner-bg);
   color: white;
+  border: 2px solid white;
+}
+
+body.light-mode .quick-facts-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+body.light-mode .fact-card {
+  background-color: var(--color-light-inner-bg);
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  min-width: 250px;
+}
+
+body.light-mode .label {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+body.light-mode .value {
+  color: var(--color-light-bg);
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
-/* Styling for the "Confirmed" column */
-.stats-table td:nth-child(2) {
-  color: #5A9D64; /* Green color for "Confirmed" statistics */
+/* Dark Mode */
+body.dark-mode .quick-facts-box {
+  background-color: var(--color-dark-inner-bg);
+  color: var(--color-dark-text);
+  border: 2px solid white;
 }
 
-/* Styling for the "Deceased" column */
-.stats-table td:nth-child(4) {
-  color: #BE3537; /* Red color for "Deceased" statistics */
+body.dark-mode .quick-facts-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-/* Styling for the "Tests" column */
-.stats-table td:nth-child(6) {
-  color: #C8CA8C; /* Olive color for "Tests" statistics */
+body.dark-mode .fact-card {
+  background-color: var(--color-dark-inner-bg);
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  min-width: 250px;
 }
 
-.stats-table th {
-  background-color: #122d3a; /* Dark blue for heading bubbles */
+body.dark-mode .label {
   color: white;
-  border-radius: 5px; /* Rounded corners for each heading */
-  padding: 12px; /* Adjust padding for smaller text */
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
 }
 
-.stats-table tr:nth-child(even) {
-  background-color: #f2f2f2; /* Light gray for even rows */
+body.dark-mode .value {
+  color: var(--color-dark-text);
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/*  MAP  */
+.map-container {
+  flex: 1;
+  min-width: 600px;
+  height: 650px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/*  WIKI SECTION  */
+.wiki-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.wiki-container h2 {
+  font-size: 3rem;
+  font-family: var(--font-main);
+  margin-bottom: 2.5rem;
+  color: white;
+  text-shadow: none;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.info-box {
+  border-radius: 25px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease;
+}
+
+.info-box h3 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: inherit;
+}
+
+.info-box p {
+  font-size: 1rem;
+  color: inherit;
+}
+
+.info-box button {
+  display: block;
+  margin: 1.5rem auto 0;
+  background-color: #2f2f2f;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 20px;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.info-box button:hover {
+  background-color: #1d1d1d;
+}
+
+body.light-mode .info-box {
+  background-color: #a8d4ed;
+  color: var(--color-light-bg);
+  border: 1px solid #dbeaf2;
+}
+
+body.dark-mode .wiki-container h2 {
+  color: var(--color-light-bg);
+}
+
+body.dark-mode .info-box {
+  background-color: #1c2a38;
+  color: white;
+  border: 1px solid white;
+}
+
+body.dark-mode .info-box button {
+  background-color: #a8d4ed;
   color: black;
 }
 
-.stats-table tr:hover {
-  background-color: #e9ecef; /* Highlight row on hover */
+body.dark-mode .info-box button:hover {
+  background-color: #c0e7ff;
 }
 
 
-/* Footer */
-.footer {
-    background-color: var(--color-light-bg);
-    padding: 1rem;
-    text-align: center;
-  }
-  
-.footer-left {
-    font-size: 0.9rem;
-  }
-  
-/* Darkmode */
-
-
-/* Dark Mode Overrides */
-body.dark-mode {
-    background-color: var(--color-dark-bg);
-    color: var(--color-dark-text);
-  }
-  
-  body.dark-mode .header-bar,
-  body.dark-mode .footer {
-    background-color: var(--color-dark-bg);
-    color: var(--color-dark-text);
-  }
-  
-  body.dark-mode .tab-link {
-    color: var(--color-dark-text);
-  }
-  
-  body.dark-mode .tab-link.active {
-    background-color: var(--color-dark-inner-bg);
-    color: white;
-  }
-  
-  body.dark-mode .quick-facts-box,
-  body.dark-mode .fact-card {
-    background-color: var(--color-dark-inner-bg);
-    color: var(--color-dark-text);
-    border-radius: 8px;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-  }
+/* Active Tab */
+.tab-link.active {
+  background-color: var(--color-dark-inner-bg); 
+  border: 2px solid var(--color-dark-inner-bg);
+  border-radius: 999px;
+}
