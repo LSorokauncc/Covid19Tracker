@@ -49,9 +49,47 @@ body {
   min-height: 100vh;
 }
 
-/* HEADER & FOOTER */
-.header-bar,
+/* ================= HEADER ================= */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 1.5rem;
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+}
+
+body.dark-mode .header-bar {
+  background-color: var(--color-dark-inner-bg);
+  color: var(--color-dark-text);
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.icon {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.header-bar h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1;
+  color: inherit;
+}
+
+/* ================= FOOTER ================= */
 .footer {
+  margin-top: auto;
+  text-align: center;
   background-color: var(--color-light-bg);
   color: var(--color-light-text);
   padding: 1rem;
@@ -61,12 +99,6 @@ body {
   position: relative;
 }
 
-.footer {
-  margin-top: auto;
-  text-align: center;
-}
-
-body.dark-mode .header-bar,
 body.dark-mode .footer {
   background-color: var(--color-dark-inner-bg);
   color: var(--color-dark-text);
@@ -79,6 +111,7 @@ body.dark-mode .footer {
   right: 1.5rem;
 }
 
+/* ================= THEME TOGGLE ================= */
 .theme-toggle {
   display: flex;
   gap: 10px;
@@ -95,16 +128,24 @@ body.dark-mode .footer {
   opacity: 1;
 }
 
-/* NAVIGATION TABS */
+/* ================= NAVIGATION TABS ================= */
+.nav-tabs {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 .tab-link {
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 999px;
   transition: background-color 0.3s ease;
+  font-size: 1rem;
 }
 
 .tab-link:hover {
   background-color: var(--color-light-inner-bg);
+  color: white;
 }
 
 .tab-link.active {
@@ -122,7 +163,7 @@ body.dark-mode .tab-link.active {
   color: white;
 }
 
-/* WIKI SECTION */
+/* ================= WIKI SECTION ================= */
 .wiki-container {
   text-align: center;
   padding: 2rem;
@@ -193,7 +234,7 @@ body.dark-mode .wiki-container h2 {
   background-color: #1d1d1d;
 }
 
-/* HOMEPAGE QUICK FACTS (unchanged) */
+/* ================= HOMEPAGE QUICK FACTS ================= */
 .home-content {
   display: flex;
   gap: 2rem;
@@ -283,7 +324,7 @@ body.dark-mode .value {
   font-weight: bold;
 }
 
-/* MAP */
+/* ================= MAP ================= */
 .map-container {
   flex: 1;
   min-width: 600px;
@@ -292,7 +333,7 @@ body.dark-mode .value {
   overflow: hidden;
 }
 
-/* COMPARE PAGE */
+/* ================= COMPARE PAGE ================= */
 .compare-container {
   display: flex;
   flex-direction: column;
@@ -329,13 +370,13 @@ body.dark-mode .value {
 }
 
 .stats-table td:nth-child(2) {
-  color: #5A9D64; /* Confirmed */
+  color: #5A9D64;
 }
 .stats-table td:nth-child(4) {
-  color: #BE3537; /* Deceased */
+  color: #BE3537;
 }
 .stats-table td:nth-child(6) {
-  color: #C8CA8C; /* Tests */
+  color: #C8CA8C;
 }
 
 .stats-table th {
@@ -352,7 +393,7 @@ body.dark-mode .value {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Dark mode tables */
+/* Dark Mode Tables */
 body.dark-mode .table-container {
   background-color: var(--color-dark-inner-bg);
   border: 2px solid white;
@@ -377,7 +418,7 @@ body.dark-mode .stats-table tr:hover {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Sticky layout support */
+/* ================= FULL PAGE HEIGHT SUPPORT ================= */
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -386,10 +427,4 @@ body.dark-mode .stats-table tr:hover {
 
 .content-wrapper {
   flex: 1;
-}
-
-.icon {
-  height: 40px;
-  width: auto;
-  margin-right: 10px;
 }
