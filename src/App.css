@@ -451,5 +451,10 @@ body.dark-mode .stats-table tr:hover {
 }
 
  
+.icon {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
  
  

@@ -8,11 +8,8 @@ const Header = ({ setActiveTab, activeTab }) => {
   return (
     <header className="header-bar">
       <div className="left-section">
-        <img
-          src="/doctor-icon.png" // must be inside the public folder
-          alt="Doctor Icon"
-          className="doctor-icon"
-        />
+      <img src={`${process.env.PUBLIC_URL}/doctor-icon.png`} alt="" className="icon" />
+
         <h1>COVID-19 Tracker</h1>
       </div>
 
