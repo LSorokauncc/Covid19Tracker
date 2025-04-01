@@ -468,5 +468,10 @@ html, body, #root {
 }
 
  
+.icon {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
  
  
