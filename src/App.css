@@ -449,6 +449,23 @@ body.dark-mode .stats-table tr:nth-child(even) {
 body.dark-mode .stats-table tr:hover {
   background-color: rgba(255, 255, 255, 0.15);
 }
+/* Full height layout */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Wrapper for full-page layout */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content grows to push footer down */
+.content-wrapper {
+  flex: 1;
+}
 
  
 .icon {
