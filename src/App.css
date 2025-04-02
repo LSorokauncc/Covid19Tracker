@@ -256,19 +256,20 @@ body.dark-mode .wiki-container h2 {
 } */
 
 .quick-facts-box {
-  background-color: var(--color-light-inner-bg);
+  background-color: var(--color-light-bg);
   color: white;
   border: 2px solid white;
 }
 
 .quick-facts-box h2 {
+  color: var(--color-light-text);
   font-size: 1.5rem;
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .fact-card {
-  background-color: var(--color-light-inner-bg);
+  background-color: #122D3A;
   border: 2px solid white;
   border-radius: 15px;
   padding: 1rem 2rem;
@@ -304,7 +305,7 @@ body.dark-mode .quick-facts-box h2 {
 }
 
 body.dark-mode .fact-card {
-  background-color: var(--color-dark-inner-bg);
+ 
   border: 2px solid white;
   border-radius: 15px;
   padding: 1rem 2rem;
