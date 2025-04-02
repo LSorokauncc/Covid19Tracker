@@ -1,17 +1,38 @@
 import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
 
 const WikiDetail = () => {
   const data = JSON.parse(localStorage.getItem("wikiDetail"));
 
-  if (!data) {
-    return <p style={{ padding: "2rem" }}>No information available.</p>;
-  }
-
   return (
-    <div className="wiki-detail" style={{ padding: "2rem" }}>
-      <h2>{data.title}</h2>
-      <p>{data.full}</p>
-      <button onClick={() => window.location.href = "/"}>← Back to Home</button>
+    <div className="page-wrapper">
+      <Header setActiveTab={() => {}} activeTab="wiki" />
+
+      <main className="content-wrapper">
+        {data ? (
+          <div className="wiki-detail-container">
+            <h2 className="detail-title">{data.title}</h2>
+
+            <div className="detail-card">
+              <h3>{data.title}</h3>
+              <p>{data.full}</p>
+              <button
+                className="back-button"
+                onClick={() => (window.location.href = "/")}
+              >
+                <em>Back to Wiki</em>
+              </button>
+            </div>
+          </div>
+        ) : (
+          <p style={{ padding: "2rem", textAlign: "center" }}>
+            No information available.
+          </p>
+        )}
+      </main>
+
+      <Footer />
     </div>
   );
 };
