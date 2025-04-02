@@ -9,7 +9,7 @@
 
   /* Dark Mode Colors */
   --color-dark-bg: #011822;
-  --color-dark-inner-bg: #122D3A;
+  --color-dark-inner-bg: #011822;
   --color-dark-text: #A1D5EB;
 
   /* Dynamic Box Styling */
@@ -54,7 +54,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 100px;
   padding: 0 1.5rem;
   background-color: var(--color-light-bg);
   color: var(--color-light-text);
@@ -430,3 +430,4 @@ body.dark-mode .stats-table tr:hover {
 .content-wrapper {
   flex: 1;
 }
+
