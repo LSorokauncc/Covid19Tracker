@@ -6,28 +6,23 @@ const Compare = () => {
   const [rightContinent, setRightContinent] = useState(null);
 
   useEffect(() => {
-    fetch("https://covid-19-data.p.rapidapi.com/report/totals?format=json", {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "a4a39f1625mshc989c7ffe78b726p1cb175jsn278c5d40842c",
-        "X-RapidAPI-Host": "covid-19-data.p.rapidapi.com",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const mockData = [
-          { continent: "TOTAL", confirmed: 697437485, perMillion: 87783.912, deceased: 6935129, deceasedPerMillion: 872.899, tests: 7008624765 },
-          { continent: "North America", confirmed: 128400588, perMillion: 215187.694, deceased: 1649792, deceasedPerMillion: 2764.901, tests: 1320159367 },
-          { continent: "South America", confirmed: 69081747, perMillion: 157945.637, deceased: 1361889, deceasedPerMillion: 3113.766, tests: 244596953 },
-          { continent: "Europe", confirmed: 260249256, perMillion: 31992.22, deceased: 2115173, deceasedPerMillion: 2428.859, tests: 3045663338 },
-          { continent: "Asia", confirmed: 239360012, perMillion: 49540.606, deceased: 1957415, deceasedPerMillion: 405.128, tests: 2672401228 },
-          { continent: "Africa", confirmed: 12562099, perMillion: 8937.596, deceased: 257923, deceasedPerMillion: 183505, tests: 109245538 },
-          { continent: "Oceania", confirmed: 11793995, perMillion: "Unknown", deceased: 22885, deceasedPerMillion: "Unknown", tests: 81916639 },
-        ];
-        setContinentStats(mockData);
+    // Fetch data from the API
+    fetch("https://disease.sh/v3/covid-19/continents")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch data from the API");
+        }
+        return res.json();
       })
-      .catch((err) => console.error("Failed to load continent stats:", err));
+      .then((data) => {
+        setContinentStats(data); // Set the fetched data to state
+      })
+      .catch((err) => console.error("Error fetching continent data:", err));
   }, []);
+
+  const getContinentNames = () => {
+    return continentStats.map((stat) => stat.continent);
+  };
 
   const renderContinentTable = (continent) => {
     if (!continent) return <p>Select a continent to view statistics.</p>;
@@ -37,11 +32,11 @@ const Compare = () => {
         <tbody>
           <tr>
             <td>Confirmed</td>
-            <td>{continent.confirmed.toLocaleString()}</td>
+            <td>{continent.cases.toLocaleString()}</td>
           </tr>
           <tr>
             <td>Deceased</td>
-            <td>{continent.deceased.toLocaleString()}</td>
+            <td>{continent.deaths.toLocaleString()}</td>
           </tr>
           <tr>
             <td>Tests</td>
@@ -73,10 +68,10 @@ const Compare = () => {
                 {continentStats.map((stat, index) => (
                   <tr key={index}>
                     <td className="continent-name">{stat.continent}</td>
-                    <td>{stat.confirmed.toLocaleString()}</td>
-                    <td>{stat.perMillion.toLocaleString()}</td>
-                    <td>{stat.deceased.toLocaleString()}</td>
-                    <td>{stat.deceasedPerMillion.toLocaleString()}</td>
+                    <td>{stat.cases.toLocaleString()}</td>
+                    <td>{stat.casesPerOneMillion.toLocaleString()}</td>
+                    <td>{stat.deaths.toLocaleString()}</td>
+                    <td>{stat.deathsPerOneMillion.toLocaleString()}</td>
                     <td>{stat.tests.toLocaleString()}</td>
                   </tr>
                 ))}
@@ -89,7 +84,7 @@ const Compare = () => {
       <h2>COMPARE</h2>
       <div className="compare-tables">
         <div className="compare-table">
-          <h3>Continent</h3>
+          <h3>First Continent</h3>
           <div className="continent-list">
             {continentStats.map((stat, index) => (
               <button
@@ -105,7 +100,7 @@ const Compare = () => {
         </div>
 
         <div className="compare-table">
-          <h3>Continent</h3>
+          <h3>Second Continent</h3>
           <div className="continent-list">
             {continentStats.map((stat, index) => (
               <button
