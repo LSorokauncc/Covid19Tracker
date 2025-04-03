@@ -2,26 +2,96 @@ import React, { useState, useEffect } from "react";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedRegion, setSelectedRegion] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState("USA");
   const [countryInfo, setCountryInfo] = useState(null);
+  const [worldwideInfo, setWorldwideInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [regions, setRegions] = useState([]);
+  const [loadingCountries, setLoadingCountries] = useState(true);
+  const [expandedRegions, setExpandedRegions] = useState({});
 
-  const regions = [
-    { name: "North America", countries: ["USA", "Canada", "Mexico", "Cuba", "Jamaica"] },
-    { name: "South America", countries: ["Brazil", "Argentina", "Colombia", "Peru", "Chile"] },
-    { name: "Europe", countries: ["UK", "France", "Germany", "Italy", "Spain"] },
-    { name: "Africa", countries: ["South Africa", "Nigeria", "Kenya", "Egypt", "Morocco"] },
-    { name: "Asia", countries: ["China", "Japan", "India", "South Korea", "Indonesia"] },
-    { name: "Oceania", countries: ["Australia", "New Zealand", "Fiji", "Papua New Guinea"] }
+  // Define continents for organizing countries
+  const continents = [
+    "North America",
+    "South America",
+    "Europe",
+    "Africa",
+    "Asia",
+    "Oceania",
+    "Other" // For any countries that don't fit into the main continents
   ];
 
+  // Fetch all countries and organize by continent
   useEffect(() => {
-    if (selectedCountry) {
+    const fetchAllCountries = async () => {
+      setLoadingCountries(true);
+      try {
+        const response = await fetch("https://disease.sh/v3/covid-19/countries");
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch countries: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Organize countries by continent
+        const organizedRegions = continents.map(continent => ({
+          name: continent,
+          countries: data
+            .filter(country => {
+              if (continent === "Other") {
+                return !continents.slice(0, -1).includes(country.continent);
+              }
+              return country.continent === continent;
+            })
+            .map(country => ({
+              name: country.country,
+              code: country.countryInfo.iso2 || country.country
+            }))
+            .sort((a, b) => a.name.localeCompare(b.name))
+        }));
+        
+        // Remove empty continents
+        const filteredRegions = organizedRegions.filter(region => region.countries.length > 0);
+        
+        setRegions(filteredRegions);
+        
+        // Also fetch worldwide data
+        fetchWorldwideData();
+      } catch (err) {
+        console.error("Error fetching countries:", err);
+        setError(`Error loading countries: ${err.message}`);
+      } finally {
+        setLoadingCountries(false);
+      }
+    };
+
+    fetchAllCountries();
+  }, []);
+
+  useEffect(() => {
+    if (selectedCountry === "all") {
+      // Do nothing, we already have worldwide data
+    } else if (selectedCountry) {
       fetchCountryData(selectedCountry);
     }
   }, [selectedCountry]);
+
+  const fetchWorldwideData = async () => {
+    try {
+      const response = await fetch("https://disease.sh/v3/covid-19/all");
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch worldwide data: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      setWorldwideInfo(data);
+    } catch (err) {
+      console.error("Error fetching worldwide data:", err);
+    }
+  };
 
   const fetchCountryData = async (country) => {
     setLoading(true);
@@ -48,25 +118,52 @@ const Search = () => {
     if (searchQuery) {
       const allCountries = regions.flatMap(r => r.countries);
       const matchedCountry = allCountries.find(c => 
-        c.toLowerCase().includes(searchQuery.toLowerCase())
+        c.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
       if (matchedCountry) {
-        setSelectedCountry(matchedCountry);
+        setSelectedCountry(matchedCountry.code);
+        
+        // Find and expand the region that contains this country
+        regions.forEach(region => {
+          if (region.countries.some(c => c.code === matchedCountry.code)) {
+            toggleRegion(region.name);
+          }
+        });
       }
     }
   };
 
-  const handleRegionClick = (region) => {
-    setSelectedRegion(region === selectedRegion ? null : region);
+  const handleCountryClick = (countryCode) => {
+    setSelectedCountry(countryCode);
   };
 
-  const handleCountryClick = (country) => {
-    setSelectedCountry(country);
+  const toggleRegion = (regionName) => {
+    setExpandedRegions(prev => ({
+      ...prev,
+      [regionName]: !prev[regionName]
+    }));
   };
 
   const formatNumber = (num) => {
     return num ? num.toLocaleString() : "N/A";
   };
+
+  const getSelectedCountryName = () => {
+    if (selectedCountry === "all") return "Worldwide";
+    
+    const allCountries = regions.flatMap(r => r.countries);
+    const country = allCountries.find(c => c.code === selectedCountry);
+    return country ? country.name : selectedCountry;
+  };
+
+  const getCurrentData = () => {
+    if (selectedCountry === "all") {
+      return worldwideInfo;
+    }
+    return countryInfo;
+  };
+
+  const currentData = getCurrentData();
 
   return (
     <div className="search-container">
@@ -84,70 +181,88 @@ const Search = () => {
           </button>
         </form>
 
-        <div className="regions-list">
-          <div className="region-header" onClick={() => setSelectedCountry("all")}>
+        <div className="countries-scrollable-container">
+          <div 
+            className={`country-item worldwide ${selectedCountry === "all" ? 'selected' : ''}`}
+            onClick={() => setSelectedCountry("all")}
+          >
             Worldwide
           </div>
           
-          {regions.map((region) => (
-            <div key={region.name}>
-              <div className="region-header" onClick={() => handleRegionClick(region.name)}>
-                {region.name}
-              </div>
-              
-              {selectedRegion === region.name && (
-                <div className="countries-list">
-                  {region.countries.map((country) => (
-                    <div 
-                      key={country}
-                      className={`country-item ${selectedCountry === country ? 'selected' : ''}`}
-                      onClick={() => handleCountryClick(country)}
-                    >
-                      {country}
-                    </div>
-                  ))}
+          {loadingCountries ? (
+            <div className="loading-countries">Loading countries...</div>
+          ) : error ? (
+            <div className="error-countries">{error}</div>
+          ) : (
+            regions.map((region) => (
+              <div key={region.name} className="region-section">
+                <div 
+                  className="region-header"
+                  onClick={() => toggleRegion(region.name)}
+                >
+                  <span className="region-name">{region.name}</span>
+                  <span className="region-count">({region.countries.length})</span>
+                  <span className="dropdown-arrow">
+                    {expandedRegions[region.name] ? '▼' : '▶'}
+                  </span>
                 </div>
-              )}
-            </div>
-          ))}
+                
+                {expandedRegions[region.name] && (
+                  <div className="region-countries">
+                    {region.countries.map((country) => (
+                      <div 
+                        key={country.code}
+                        className={`country-item ${selectedCountry === country.code ? 'selected' : ''}`}
+                        onClick={() => handleCountryClick(country.code)}
+                      >
+                        {country.name}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))
+          )}
         </div>
       </div>
 
       <div className="country-data-panel">
         <div className="country-header">
           <h2 className="country-title">
-            {selectedCountry === "all" ? "Worldwide" : selectedCountry}
+            {getSelectedCountryName()}
           </h2>
         </div>
 
-        {loading ? (
+        {selectedCountry === "all" && !worldwideInfo ? (
+          <div className="loading-state">Loading worldwide data...</div>
+        ) : loading ? (
           <div className="loading-state">Loading...</div>
         ) : error ? (
           <div className="error-state">{error}</div>
-        ) : countryInfo ? (
+        ) : currentData ? (
           <div className="country-stats">
             <h3>Current COVID-19 Statistics</h3>
             <table className="stats-table">
               <tbody>
                 <tr>
                   <td className="stat-label">Active Cases:</td>
-                  <td className="stat-value">{formatNumber(countryInfo.active)}</td>
+                  <td className="stat-value">{formatNumber(currentData.active)}</td>
                 </tr>
                 <tr>
                   <td className="stat-label">Critical Cases:</td>
-                  <td className="stat-value">{formatNumber(countryInfo.critical)}</td>
+                  <td className="stat-value">{formatNumber(currentData.critical)}</td>
                 </tr>
                 <tr>
                   <td className="stat-label">Tests Conducted:</td>
-                  <td className="stat-value">{formatNumber(countryInfo.tests)}</td>
+                  <td className="stat-value">{formatNumber(currentData.tests)}</td>
                 </tr>
                 <tr>
                   <td className="stat-label">Cases Per Million:</td>
-                  <td className="stat-value">{formatNumber(countryInfo.casesPerOneMillion)}</td>
+                  <td className="stat-value">{formatNumber(currentData.casesPerOneMillion)}</td>
                 </tr>
                 <tr>
                   <td className="stat-label">Deaths Per Million:</td>
-                  <td className="stat-value">{formatNumber(countryInfo.deathsPerOneMillion)}</td>
+                  <td className="stat-value">{formatNumber(currentData.deathsPerOneMillion)}</td>
                 </tr>
               </tbody>
             </table>
