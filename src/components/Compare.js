@@ -81,7 +81,7 @@ const Compare = () => {
         </div>
       </div>
 
-      <h2>COMPARE</h2>
+      <h2 className="compare-title">COMPARE</h2>
       <div className="compare-tables">
         <div className="compare-table">
           <h3>First Continent</h3>

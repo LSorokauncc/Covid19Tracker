@@ -347,6 +347,8 @@ body.dark-mode .value {
   gap: 2rem;
   padding: 2rem;
   align-items: center;
+  color: #A1D5EB;
+  text-align: center;
 }
 
 .table-container {
@@ -386,9 +388,15 @@ body.dark-mode .value {
   color: #C8CA8C;
 }
 
+/* Styling for continent names in the "WORLD COVID-19 STATS" table */
+.stats-table td.continent-name {
+  color: #A1D5EB; 
+  font-weight: bold; 
+}
+
 .stats-table th {
   background-color: var(--color-light-inner-bg);
-  color: white;
+  color: #A1D5EB;
   border-radius: 8px;
 }
 
@@ -400,29 +408,118 @@ body.dark-mode .value {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Dark Mode Tables */
-body.dark-mode .table-container {
-  background-color: var(--color-dark-inner-bg);
-  border: 2px solid white;
+/* Container for the compare tables */
+.compare-tables {
+  display: flex; 
+  justify-content: space-between; 
+  margin-top: 20px; 
+  gap: 20px; 
+  width: 100%; 
+  max-width: 1000px; 
+  margin-left: auto; 
+  margin-right: auto; 
 }
 
-body.dark-mode .stats-table th,
-body.dark-mode .stats-table td {
-  border-color: white;
-  color: var(--color-dark-text);
+/* Styling specifically for the "COMPARE" title */
+.compare-title {
+  text-align: center; 
+  color: #A1D5EB; 
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  margin-bottom: 20px; 
 }
 
-body.dark-mode .stats-table th {
-  background-color: var(--color-dark-inner-bg);
-  color: white;
+/* Individual compare table styling */
+.compare-table {
+  width: 45%; 
+  background-color: #122D3A; 
+  border: 2px solid #A1D5EB; 
+  border-radius: 10px; 
+  padding: 20px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  text-align: center; 
+  color: #122D3A; 
 }
 
-body.dark-mode .stats-table tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.05);
+/* Heading for each compare table */
+.compare-table h3 {
+  margin-top: 1px;
+  margin-bottom: 15px; 
+  font-size: 1.2rem; 
+  color: #A1D5EB; 
+  border-bottom: 2px solid #A1D5EB; 
+  padding-bottom: 10px; 
 }
 
-body.dark-mode .stats-table tr:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+/* Styling for continent buttons */
+.continent-button {
+  padding: 10px 15px; 
+  background-color: #A1D5EB; 
+  border: 2px solid #122D3A; 
+  border-radius: 8px; 
+  color: #122D3A; 
+  font-size: 0.9rem; 
+  font-weight: bold; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.continent-button:hover {
+  background-color: #122D3A; 
+  color: #A1D5EB; 
+}
+
+.continent-button.active {
+  background-color: #122D3A; 
+  color: #A1D5EB; 
+  border: 2px solid #A1D5EB; 
+}
+
+/* Table inside each compare table */
+.compare-stats-table {
+  width: 100%; 
+  border-collapse: collapse; 
+  margin-top: 10px; 
+  border: 5px solid #A1D5EB; 
+  border-radius: 10px; 
+  overflow: hidden; 
+}
+
+.compare-stats-table th,
+.compare-stats-table td {
+  border: 2px solid #A1D5EB; 
+  padding: 8px; 
+  text-align: center; 
+  color: #A1D5EB; 
+}
+
+.compare-stats-table th {
+  background-color: #122D3A; 
+  color: #A1D5EB; 
+}
+
+/* Specific font colors for rows */
+.compare-stats-table tr:nth-child(1) td {
+  color: #5A9D64; 
+  background-color: #122D3A;
+}
+
+.compare-stats-table tr:nth-child(2) td {
+  color: #BE3537; 
+  background-color: #122D3A;
+}
+
+.compare-stats-table tr:nth-child(3) td {
+  color: #C8CA8C; 
+  background-color: #122D3A;
+}
+
+.compare-stats-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.5); 
+}
+
+.compare-stats-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.7); 
 }
 
 /* ================= FULL PAGE HEIGHT SUPPORT ================= */
