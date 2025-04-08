@@ -1,39 +1,64 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
 
 const WikiDetail = () => {
-  const data = JSON.parse(localStorage.getItem("wikiDetail"));
+  const data = JSON.parse(localStorage.getItem('wikiDetail'));
+
+  const containerStyle = {
+    padding: '2rem',
+    minHeight: '100vh',
+    backgroundColor: 'var(--color-light-inner-bg)',
+    color: 'var(--body-text-color)',
+    transition: 'background-color 0.3s ease, color 0.3s ease',
+    fontFamily: 'var(--font-main)',
+  };
+
+  const titleStyle = {
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    marginBottom: '1.5rem',
+    color: 'white',
+  };
+
+  const textStyle = {
+    fontSize: '1.2rem',
+    lineHeight: '1.6',
+    color: 'var(--box-text-color)',
+  };
+
+  const buttonStyle = {
+    marginTop: '2rem',
+    backgroundColor: '#2f2f2f',
+    color: 'white',
+    padding: '0.6rem 1.4rem',
+    border: 'none',
+    borderRadius: '20px',
+    fontStyle: 'italic',
+    fontWeight: 600,
+    letterSpacing: '0.5px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  };
 
   return (
-    <div className="page-wrapper">
-      <Header setActiveTab={() => {}} activeTab="wiki" />
+    <main style={containerStyle}>
+      {data ? (
+        <div>
+          <h2 style={titleStyle}>{data.title}</h2>
+          <p style={textStyle}>{data.short}</p>
 
-      <main className="content-wrapper">
-        {data ? (
-          <div className="wiki-detail-container">
-            <h2 className="detail-title">{data.title}</h2>
-
-            <div className="detail-card">
-              <h3>{data.title}</h3>
-              <p>{data.full}</p>
-              <button
-                className="back-button"
-                onClick={() => (window.location.href = "/")}
-              >
-                <em>Back to Wiki</em>
-              </button>
-            </div>
-          </div>
-        ) : (
-          <p style={{ padding: "2rem", textAlign: "center" }}>
-            No information available.
-          </p>
-        )}
-      </main>
-
-      <Footer />
-    </div>
+          <button
+            style={buttonStyle}
+            onClick={() => (window.location.href = '/')}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1d1d1d')}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#2f2f2f')}
+          >
+            Back to Wiki
+          </button>
+        </div>
+      ) : (
+        <p>No information available.</p>
+      )}
+    </main>
   );
 };
 

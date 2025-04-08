@@ -43,7 +43,7 @@ const Wiki = () => {
     marginBottom: '2.5rem',
     textAlign: 'center',
     fontFamily: 'var(--font-main)',
-    color: 'white', // ✅ Force white in both modes
+    color: 'white',
   };
 
   const gridStyle = {
@@ -60,7 +60,7 @@ const Wiki = () => {
     boxShadow: '0 6px 12px rgba(0, 0, 0, 0.2)',
     textAlign: 'left',
     border: '1px solid var(--box-border-color)',
-    backgroundColor: 'var(--box-bg-color)', // auto light/dark match
+    backgroundColor: 'var(--box-bg-color)',
     color: 'var(--box-text-color)',
     display: 'flex',
     flexDirection: 'column',
@@ -106,8 +106,8 @@ const Wiki = () => {
             <button
               style={buttonStyle}
               onClick={() => handleReadMore(item)}
-              onMouseOver={(e) => (e.target.style.backgroundColor = '#1d1d1d')}
-              onMouseOut={(e) => (e.target.style.backgroundColor = '#2f2f2f')}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1d1d1d')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#2f2f2f')}
             >
               Read more...
             </button>
