@@ -491,6 +491,7 @@ body.dark-mode .value {
   padding: 8px; 
   text-align: center; 
   color: #A1D5EB; 
+  font-weight: bold;
 }
 
 .compare-stats-table th {
