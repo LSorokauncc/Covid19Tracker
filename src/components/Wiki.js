@@ -29,13 +29,14 @@ const Wiki = () => {
     window.location.href = '/detail';
   };
 
-  // === Inline Styles ===
   const containerStyle = {
-    padding: '2rem',
-    minHeight: '100vh',
+    padding: '1rem',
+    width: '100%',
+    boxSizing: 'border-box',
     backgroundColor: 'var(--color-light-inner-bg)',
     color: 'var(--body-text-color)',
     transition: 'background-color 0.3s ease, color 0.3s ease',
+    flex: 1, // ✅ important to let it fill space so footer can go to the bottom
   };
 
   const headingStyle = {
@@ -43,7 +44,7 @@ const Wiki = () => {
     marginBottom: '2.5rem',
     textAlign: 'center',
     fontFamily: 'var(--font-main)',
-    color: 'white',
+    color: 'var(--body-text-color)',
   };
 
   const gridStyle = {
@@ -96,7 +97,7 @@ const Wiki = () => {
   };
 
   return (
-    <div style={containerStyle}>
+    <div className="content-wrapper" style={containerStyle}>
       <h2 style={headingStyle}>WIKI</h2>
       <div style={gridStyle}>
         {infoData.map((item, index) => (
