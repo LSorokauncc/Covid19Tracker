@@ -351,6 +351,16 @@ body.dark-mode .value {
   text-align: center;
 }
 
+/* Styling for the "WORLD COVID-19 STATS" title */
+.compare-container h2 {
+  text-align: center; 
+  color: #A1D5EB; 
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  margin-bottom: 20px; 
+  margin-left: 3rem;
+}
+
 .table-container {
   max-height: 450px;
   overflow-y: auto;
@@ -381,7 +391,7 @@ body.dark-mode .value {
 .stats-table th,
 .stats-table td {
   padding: 0.8rem;
-  border: 1px solid white;
+  border: 2px solid #A1D5EB;
   font-weight: bold;
   color: white;
 }
