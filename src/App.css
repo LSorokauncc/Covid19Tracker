@@ -360,7 +360,15 @@ body.dark-mode .value {
   max-width: 1000px;
   background-color: var(--color-light-inner-bg);
   transition: background-color 0.3s ease;
-  border: 2px solid white;
+  border: 2px solid #A1D5EB;
+}
+
+
+.select-continent-message {
+  color: #A1D5EB; 
+  font-size: 1rem; 
+  text-align: center; 
+  margin-top: 10px; 
 }
 
 .stats-table {

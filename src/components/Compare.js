@@ -25,7 +25,8 @@ const Compare = () => {
   };
 
   const renderContinentTable = (continent) => {
-    if (!continent) return <p>Select a continent to view statistics.</p>;
+    if (!continent)
+      return <p className="select-continent-message">Select a continent to view statistics.</p>;
 
     return (
       <table className="compare-stats-table">
