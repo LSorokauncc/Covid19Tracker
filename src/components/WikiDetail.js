@@ -48,9 +48,15 @@ const WikiDetail = () => {
 
           <button
             style={buttonStyle}
-            onClick={() => (window.location.href = '/')}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1d1d1d')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#2f2f2f')}
+            onClick={() => {
+              window.location.href = "/";
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "#1d1d1d")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#2f2f2f")
+            }
           >
             Back to Wiki
           </button>
