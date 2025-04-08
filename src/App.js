@@ -2,28 +2,37 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 // Components
-import HomePage from "./components/HomePage"; 
-import Header from "./components/Header"; 
-import Footer from "./components/Footer"; 
-import Wiki from "./components/Wiki"; 
-import Search from "./components/Search"; 
-import Compare from "./components/Compare"; 
-import DarkModeToggle from "./components/DarkMode"; 
-import WikiDetail from "./components/WikiDetail"; 
-
+import HomePage from "./components/HomePage";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Wiki from "./components/Wiki";
+import Search from "./components/Search";
+import Compare from "./components/Compare";
+import WikiDetail from "./components/WikiDetail";
 
 function App() {
-  const [activeTab, setActiveTab] = useState("home");
+  // Load activeTab from localStorage on page load
+  const [activeTab, setActiveTab] = useState(() => {
+    return localStorage.getItem("activeTab") || "home";
+  });
+
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     document.body.className = darkMode ? "dark-mode" : "";
   }, [darkMode]);
 
-  // Handle separate detail page view
+  // Special case: if on /detail page
   if (window.location.pathname === "/detail") {
     return (
       <div className="page-wrapper">
+        <Header
+          setActiveTab={(tab) => {
+            localStorage.setItem("activeTab", tab); // save it for when we return
+            window.location.href = "/";
+          }}
+          activeTab="wiki"
+        />
         <div className="content-wrapper">
           <WikiDetail />
         </div>
@@ -32,9 +41,15 @@ function App() {
     );
   }
 
+  // Save active tab to localStorage whenever it changes
+  const handleSetActiveTab = (tab) => {
+    localStorage.setItem("activeTab", tab);
+    setActiveTab(tab);
+  };
+
   return (
     <div className="page-wrapper">
-      <Header setActiveTab={setActiveTab} activeTab={activeTab} />
+      <Header setActiveTab={handleSetActiveTab} activeTab={activeTab} />
 
       <div className="content-wrapper">
         {activeTab === "home" && <HomePage />}

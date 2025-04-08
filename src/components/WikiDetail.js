@@ -49,6 +49,8 @@ const WikiDetail = () => {
           <button
             style={buttonStyle}
             onClick={() => {
+              // This sets up the app to open with Wiki tab after returning
+              localStorage.setItem('activeTab', 'wiki');
               window.location.href = "/";
             }}
             onMouseEnter={(e) =>
