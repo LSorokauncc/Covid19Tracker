@@ -166,7 +166,7 @@ const Search = () => {
   const currentData = getCurrentData();
 
   return (
-    <div className="search-container">
+    <div className="page-layout">
       <div className="search-panel">
         <form onSubmit={handleSearch} className="search-form">
           <input

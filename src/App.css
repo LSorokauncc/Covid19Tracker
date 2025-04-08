@@ -298,7 +298,7 @@ body.dark-mode .wiki-container h2 {
 body.dark-mode .quick-facts-box {
   background-color: var(--color-dark-inner-bg);
   color: var(--color-dark-text);
-  border: 2px solid white;
+  border: 2px solid var(--color-light-bg);
 }
 
 body.dark-mode .quick-facts-box h2 {
@@ -310,9 +310,9 @@ body.dark-mode .quick-facts-box h2 {
 
 body.dark-mode .fact-card {
  
-  border: 2px solid white;
+  border: 2px solid var(--color-light-bg);
   border-radius: 15px;
-  padding: 1rem 2rem;
+  padding: 1rem;
   margin-bottom: 1rem;
   text-align: center;
   min-width: 250px;
@@ -434,5 +434,25 @@ body.dark-mode .stats-table tr:hover {
 
 .content-wrapper {
   flex: 1;
+}
+
+
+/* ================= Search Page ================= */
+.page-layout {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: grid;
+  grid-template-columns: .5fr 1fr;
+  padding: 2rem;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+.search-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  border: 2px solid white;
 }
 
