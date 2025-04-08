@@ -259,6 +259,7 @@ body.dark-mode .wiki-container h2 {
   background-color: var(--color-light-bg);
   color: white;
   border: 2px solid white;
+  border-radius: 20px;
 }
 
 .quick-facts-box h2 {
@@ -272,7 +273,9 @@ body.dark-mode .wiki-container h2 {
   background-color: #122D3A;
   border: 2px solid white;
   border-radius: 15px;
-  padding: 1rem 2rem;
+  padding: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   margin-bottom: 1rem;
   text-align: center;
   min-width: 250px;
