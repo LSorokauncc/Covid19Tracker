@@ -16,14 +16,20 @@ function App() {
     return localStorage.getItem("activeTab") || "home";
   });
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
+  
 
   useEffect(() => {
     document.body.className = darkMode ? "dark-mode" : "";
+    localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
   // Special case: if on /detail page
   if (window.location.pathname === "/detail") {
+    document.body.className = localStorage.getItem("darkMode") === "true" ? "dark-mode" : "";
+
     return (
       <div className="page-wrapper">
         <Header

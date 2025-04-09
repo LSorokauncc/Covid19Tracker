@@ -5,11 +5,27 @@ const HomePage = () => {
     const [quickStats, setQuickStats] = useState(null);
 
     useEffect(() => {
-      fetch("https://disease.sh/v3/covid-19/all")
-        .then((res) => res.json())
-        .then((data) => setQuickStats(data))
-        .catch((err) => console.error("Failed to load quick facts:", err));
+      const fetchStats = async () => {
+        try {
+          // First API call for general COVID stats
+          const covidRes = await fetch("https://disease.sh/v3/covid-19/all");
+          const covidData = await covidRes.json();
+  
+          // Second API call for total vaccinated doses
+          const vaccineRes = await fetch("https://disease.sh/v3/covid-19/vaccine/coverage?lastdays=1&fullData=false");
+          const vaccineData = await vaccineRes.json();
+          const vaccinated = Object.values(vaccineData)[0]; // Gets the value of the only property
+  
+          // Combine data
+          setQuickStats({ ...covidData, vaccinated });
+        } catch (err) {
+          console.error("Error fetching data:", err);
+        }
+      };
+  
+      fetchStats();
     }, []);
+  
       
      
     return (
@@ -41,7 +57,7 @@ const HomePage = () => {
               <div className="fact-card">
                 <div className="label">Total Vaccinated</div>
                 <div className="value">
-                  {quickStats.peopleVaccinated?.toLocaleString() || "N/A"}
+                  {quickStats.vaccinated?.toLocaleString() || "N/A"}
                 </div>
               </div>
             </>
