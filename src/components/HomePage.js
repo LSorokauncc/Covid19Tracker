@@ -65,9 +65,30 @@ const HomePage = () => {
             <p>Loading stats...</p>
           )}
         </div>
-    
-          <Map />
-          
+        
+        <div className="map-container">
+        <Map />
+        <div className="heatmap-legend">        
+          <div className="legend-bar">
+            <div className="legend-color" style={{ background: "rgb(255,255,178)" }}></div>
+            <div className="legend-color" style={{ background: "rgb(254,217,118)" }}></div>
+            <div className="legend-color" style={{ background: "rgb(253,141,60)" }}></div>
+            <div className="legend-color" style={{ background: "rgb(252,78,42)" }}></div>
+            <div className="legend-color" style={{ background: "rgb(227,26,28)" }}></div>
+            <div className="legend-color" style={{ background: "rgb(177,0,38)" }}></div>
+          </div>
+        <div className="legend-labels">
+          <span>&lt;1,000</span>
+          <span>1k-5k</span>
+          <span>5k-10k</span>
+          <span>10k-50k</span>
+          <span>50k-500k</span>
+          <span>&gt;1M</span>
+        </div>
+      </div>
+    </div>
+        
+                   
         </div>
       );
     };
