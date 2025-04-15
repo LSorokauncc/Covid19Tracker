@@ -4,6 +4,30 @@ import mapboxgl from "mapbox-gl";
 // Mapbox access token
 mapboxgl.accessToken = "pk.eyJ1IjoicmZlcm5hbjIiLCJhIjoiY204aGs0aHM3MDMxeDJpcHphamw5aTJrMyJ9.OqkUxJZB6eHGyAqPbSOs-w";
 
+// Bounds for each continent
+const continentBounds = {
+  "Africa": [[-20, -40], [55, 40]],
+  "Asia": [[25, 0], [180, 80]],
+  "Europe": [[-25, 35], [45, 70]],
+  "North America": [[-170, 5], [-50, 85]],
+  "South America": [[-90, -60], [-30, 15]],
+  "Oceania": [[110, -50], [180, 10]]
+};
+
+// Helper to determine clicked continent
+const getContinentFromCoords = (lngLat) => {
+  const [lng, lat] = [lngLat.lng, lngLat.lat];
+
+  for (const continent in continentBounds) {
+    const [[minLng, minLat], [maxLng, maxLat]] = continentBounds[continent];
+    if (lng >= minLng && lng <= maxLng && lat >= minLat && lat <= maxLat) {
+      return continent;
+    }
+  }
+
+  return null;
+};
+
 const Map = () => {
   const mapContainerRef = useRef(null);
 
@@ -40,7 +64,7 @@ const Map = () => {
             500000, 0.5,
             1000000, 1,
           ],
-          "heatmap-intensity": 0.6, 
+          "heatmap-intensity": 0.6,
           "heatmap-color": [
             "interpolate",
             ["linear"],
@@ -52,8 +76,8 @@ const Map = () => {
             0.7, "rgb(227,26,28)",
             1, "rgb(177,0,38)",
           ],
-          "heatmap-radius": 20,     
-          "heatmap-opacity": 0.6,   
+          "heatmap-radius": 20,
+          "heatmap-opacity": 0.6,
         },
       });
 
@@ -83,6 +107,17 @@ const Map = () => {
           map.getSource("covid-data").setData(geoData);
         })
         .catch((err) => console.error("Error fetching COVID data:", err));
+
+      // 4. Handle click to detect continent and set it
+      map.on("click", (e) => {
+        const continentClicked = getContinentFromCoords(e.lngLat);
+
+        if (continentClicked) {
+          localStorage.setItem("searchRegion", continentClicked);
+          localStorage.setItem("activeTab", "search");
+          window.location.reload(); // switch to Search tab
+        }
+      });
     });
 
     return () => map.remove();
