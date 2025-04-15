@@ -194,9 +194,8 @@ const Search = () => {
             className={`country-item worldwide ${selectedCountry === "all" ? 'selected' : ''}`}
             onClick={() => setSelectedCountry("all")}
           >
-            Worldwide
+            <h2>Worldwide</h2>
           </div>
-          
           {loadingCountries ? (
             <div className="loading-countries">Loading countries...</div>
           ) : error ? (
@@ -204,7 +203,7 @@ const Search = () => {
           ) : (
             regions.map((region) => (
               <div key={region.name} className="region-section">
-                <div 
+                <h2><div 
                   className="region-header"
                   onClick={() => toggleRegion(region.name)}
                 >
@@ -213,7 +212,8 @@ const Search = () => {
                   <span className="dropdown-arrow">
                     {expandedRegions[region.name] ? '▼' : '▶'}
                   </span>
-                </div>
+                </div></h2>
+
                 
                 {expandedRegions[region.name] && (
                   <div className="region-countries">
