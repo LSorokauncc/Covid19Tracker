@@ -6,18 +6,67 @@ const Compare = () => {
   const [rightContinent, setRightContinent] = useState(null);
 
   useEffect(() => {
-    // Fetch data from the API
-    fetch("https://disease.sh/v3/covid-19/continents")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to fetch data from the API");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setContinentStats(data); // Set the fetched data to state
-      })
-      .catch((err) => console.error("Error fetching continent data:", err));
+    // Mock data for continents
+    const mockData = [
+      {
+        continent: "TOTAL",
+        cases: 697437485,
+        casesPerOneMillion: 87783.912,
+        deaths: 6935129,
+        deathsPerOneMillion: 872.899,
+        tests: 7008624765,
+      },
+      {
+        continent: "North America",
+        cases: 18400588,
+        casesPerOneMillion: 215187.694,
+        deaths: 1648792,
+        deathsPerOneMillion: 2764.901,
+        tests: 1320159367,
+      },
+      {
+        continent: "South America",
+        cases: 69081747,
+        casesPerOneMillion: 157945.637,
+        deaths: 1361889,
+        deathsPerOneMillion: 3113.766,
+        tests: 244596953,
+      },
+      {
+        continent: "Europe",
+        cases: 69081747,
+        casesPerOneMillion: 157945.637,
+        deaths: 1361889,
+        deathsPerOneMillion: 3113.766,
+        tests: 244596953,
+      },
+      {
+        continent: "Asia",
+        cases: 239360012,
+        casesPerOneMillion: 49540.606,
+        deaths: 1957415,
+        deathsPerOneMillion: 405.128,
+        tests: 2672401228,
+      },
+      {
+        continent: "Africa",
+        cases: 12562099,
+        casesPerOneMillion: 8937.595,
+        deaths: 257923,
+        deathsPerOneMillion: 183.505,
+        tests: 109245538,
+      },
+      {
+        continent: "Oceana/Australia",
+        cases: 11793995,
+        casesPerOneMillion: "Unknown",
+        deaths: 22885,
+        deathsPerOneMillion: "Unknown",
+        tests: 81916639,
+      },
+    ];
+
+    setContinentStats(mockData); // Set the mock data directly to state
   }, []);
 
   const getContinentNames = () => {
