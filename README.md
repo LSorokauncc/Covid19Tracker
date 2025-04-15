@@ -18,3 +18,4 @@
 ## References
 
 - [Mapbox Map component](https://docs.mapbox.com/mapbox-gl-js/guides/)
+- [Covid 19 API](https://covid-api.com/api/reports) and mockdata(mock.json)

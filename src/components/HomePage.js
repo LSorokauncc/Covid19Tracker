@@ -5,35 +5,33 @@ const HomePage = () => {
   const [quickStats, setQuickStats] = useState(null);
 
   useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const res = await fetch("https://covid-19.dataflowkit.com/v1/world");
-        const data = await res.json();
-
-        // Parse string values to numbers for formatting
-        const parseStat = (value) =>
-          value && !isNaN(Number(value.replace(/,/g, "")))
-            ? Number(value.replace(/,/g, ""))
-            : null;
-
-        const parsedData = {
-          confirmed: parseStat(data["Total Cases_text"]),
-          deaths: parseStat(data["Total Deaths_text"]),
-          recovered: parseStat(data["Total Recovered_text"]),
-          active: parseStat(data["Active Cases_text"]),
-          newCases: parseStat(data["New Cases_text"]),
-          newDeaths: parseStat(data["New Deaths_text"]),
-          lastUpdate: data["Last Update"],
-        };
-
-        setQuickStats(parsedData);
-      } catch (err) {
-        console.error("Error fetching data:", err);
-      }
-    };
-
-    fetchStats();
+    Promise.all([
+      fetch("https://covid-api.com/api/reports").then((res) => res.json()),
+      fetch(process.env.PUBLIC_URL + "/mock.json").then((res) => res.json())
+    ])
+    .then(([apiData, mockData]) => {
+      let totals = {
+        confirmed: 0,
+        deaths: 0,
+        active: 0,
+        recovered: mockData.recovered || 0, // use mock data directly
+        critical: mockData.critical || 0,
+        vaccinated: mockData.vaccinated || 0
+      };
+  
+      apiData.data.forEach((entry) => {
+        totals.confirmed += entry.confirmed || 0;
+        totals.deaths += entry.deaths || 0;
+        totals.active += entry.active || 0;
+      });
+  
+      setQuickStats(totals);
+    })
+    .catch((err) => console.error("Error fetching data:", err));
   }, []);
+  
+
+  
 
   return (
     <div className="home-content">
@@ -44,43 +42,40 @@ const HomePage = () => {
             <div className="fact-card">
               <div className="label">Total Confirmed</div>
               <div className="value">
-                {quickStats.confirmed?.toLocaleString() || "N/A"}
+                {quickStats.confirmed.toLocaleString() || "N/A"}
               </div>
             </div>
             <div className="fact-card">
-              <div className="label">New Cases</div>
+              <div className="label">New Critical</div>
               <div className="value">
-                {quickStats.newCases?.toLocaleString() || "N/A"}
+                {quickStats.critical.toLocaleString() || "N/A"}
               </div>
             </div>
             <div className="fact-card">
-              <div className="label">Total Deaths</div>
+              <div className="label">Total Deceased</div>
               <div className="value">
-                {quickStats.deaths?.toLocaleString() || "N/A"}
-              </div>
-            </div>
-            <div className="fact-card">
-              <div className="label">New Deaths</div>
-              <div className="value">
-                {quickStats.newDeaths?.toLocaleString() || "N/A"}
-              </div>
-            </div>
-            <div className="fact-card">
-              <div className="label">Total Recovered</div>
-              <div className="value">
-                {quickStats.recovered?.toLocaleString() || "N/A"}
+                {quickStats.deaths.toLocaleString() || "N/A"}
               </div>
             </div>
             <div className="fact-card">
               <div className="label">Total Active</div>
               <div className="value">
-                {quickStats.active?.toLocaleString() || "N/A"}
+                {quickStats.active.toLocaleString() || "N/A"}
               </div>
             </div>
             <div className="fact-card">
-              <div className="label">Last Update</div>
-              <div className="value">{quickStats.lastUpdate || "N/A"}</div>
+              <div className="label">Total Recovered</div>
+              <div className="value">
+                {quickStats.recovered.toLocaleString() || "N/A"}
+              </div>
             </div>
+            <div className="fact-card">
+              <div className="label">Total Vaccinated</div>
+              <div className="value">
+                {quickStats.vaccinated.toLocaleString() || "N/A"}
+              </div>
+            </div>
+            
           </>
         ) : (
           <p>Loading stats...</p>
