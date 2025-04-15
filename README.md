@@ -18,5 +18,6 @@
 ## References
 
 - [Mapbox Map component](https://docs.mapbox.com/mapbox-gl-js/guides/)
-- [Covid 19 API](https://covid-api.com/api/reports)
-- [mockdata] ['mock.json'](https://ncov2019.live/)
+- [Covid 19 API for worldwide info](https://disease.sh/v3/covid-19/all)
+- [Covid 19 API for each country info](https://disease.sh/v3/covid-19/countries)
+- [Covid 19 API for vaccination info](https://disease.sh/v3/covid-19/vaccine/coverage?lastdays=1&fullData=false)

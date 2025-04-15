@@ -5,33 +5,25 @@ const HomePage = () => {
   const [quickStats, setQuickStats] = useState(null);
 
   useEffect(() => {
-    Promise.all([
-      fetch("https://covid-api.com/api/reports").then((res) => res.json()),
-      fetch(process.env.PUBLIC_URL + "/mock.json").then((res) => res.json())
-    ])
-    .then(([apiData, mockData]) => {
-      let totals = {
-        confirmed: 0,
-        deaths: 0,
-        active: 0,
-        recovered: mockData.recovered || 0, // use mock data directly
-        critical: mockData.critical || 0,
-        vaccinated: mockData.vaccinated || 0
-      };
-  
-      apiData.data.forEach((entry) => {
-        totals.confirmed += entry.confirmed || 0;
-        totals.deaths += entry.deaths || 0;
-        totals.active += entry.active || 0;
-      });
-  
-      setQuickStats(totals);
-    })
-    .catch((err) => console.error("Error fetching data:", err));
-  }, []);
-  
+    const fetchStats = async () => {
+      try {
+        // Fetch global stats
+        const statsRes = await fetch("https://disease.sh/v3/covid-19/all");
+        const statsData = await statsRes.json();
 
-  
+        // Fetch vaccination totals
+        const vaccineRes = await fetch("https://disease.sh/v3/covid-19/vaccine/coverage?lastdays=1&fullData=false");
+        const vaccineData = await vaccineRes.json();
+        const vaccinated = Object.values(vaccineData)[0];
+
+        setQuickStats({ ...statsData, vaccinated });
+      } catch (err) {
+        console.error("Error fetching homepage data:", err);
+      }
+    };
+
+    fetchStats();
+  }, []);
 
   return (
     <div className="home-content">
@@ -41,41 +33,28 @@ const HomePage = () => {
           <>
             <div className="fact-card">
               <div className="label">Total Confirmed</div>
-              <div className="value">
-                {quickStats.confirmed.toLocaleString() || "N/A"}
-              </div>
+              <div className="value">{quickStats.cases?.toLocaleString() || "N/A"}</div>
             </div>
             <div className="fact-card">
               <div className="label">New Critical</div>
-              <div className="value">
-                {quickStats.critical.toLocaleString() || "N/A"}
-              </div>
+              <div className="value">{quickStats.critical?.toLocaleString() || "N/A"}</div>
             </div>
             <div className="fact-card">
               <div className="label">Total Deceased</div>
-              <div className="value">
-                {quickStats.deaths.toLocaleString() || "N/A"}
-              </div>
+              <div className="value">{quickStats.deaths?.toLocaleString() || "N/A"}</div>
             </div>
             <div className="fact-card">
               <div className="label">Total Active</div>
-              <div className="value">
-                {quickStats.active.toLocaleString() || "N/A"}
-              </div>
+              <div className="value">{quickStats.active?.toLocaleString() || "N/A"}</div>
             </div>
             <div className="fact-card">
               <div className="label">Total Recovered</div>
-              <div className="value">
-                {quickStats.recovered.toLocaleString() || "N/A"}
-              </div>
+              <div className="value">{quickStats.recovered?.toLocaleString() || "N/A"}</div>
             </div>
             <div className="fact-card">
               <div className="label">Total Vaccinated</div>
-              <div className="value">
-                {quickStats.vaccinated.toLocaleString() || "N/A"}
-              </div>
+              <div className="value">{quickStats.vaccinated?.toLocaleString() || "N/A"}</div>
             </div>
-            
           </>
         ) : (
           <p>Loading stats...</p>
