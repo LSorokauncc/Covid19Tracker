@@ -640,10 +640,10 @@ body.dark-mode .search-panel {
   padding-left: 3px;
   padding-right: 3px;
   cursor: pointer;
-  
 }
 
 .region-countries {
+  height: 6rem;
   overflow-y: auto;
   margin-top: 8px;
   text-wrap: wrap;
