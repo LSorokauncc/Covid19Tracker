@@ -590,6 +590,7 @@ body.dark-mode .value {
 
 
 /* ================= Search Page ================= */
+/* page layout, styling for the main table */
 .page-layout {
   margin-left: 2rem;
   margin-right: 2rem;
@@ -598,6 +599,8 @@ body.dark-mode .value {
   padding: 3rem;
   gap: 20rem;
   box-sizing: border-box;
+  color: var(--color-light-bg);
+  text-align: center;
 }
 
 .search-panel {
