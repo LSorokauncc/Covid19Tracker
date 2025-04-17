@@ -595,9 +595,9 @@ body.dark-mode .value {
   margin-left: 2rem;
   margin-right: 2rem;
   display: grid;
-  grid-template-columns: .25fr 1fr;
+  grid-template-columns: 20% 60%;
   padding: 3rem;
-  gap: 20rem;
+  gap: 15%;
   box-sizing: border-box;
   color: var(--color-light-bg);
   text-align: center;
