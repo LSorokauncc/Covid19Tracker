@@ -608,7 +608,6 @@ body.dark-mode .value {
   color: white;
   border: 2px solid var(--color-light-bg);
   border-radius: 20px;
-  /* height: 150%; */
   width: 100%;
 }
 
@@ -626,7 +625,6 @@ body.dark-mode .search-panel {
   text-align: center;
   border-radius: 20px;
   margin-top: 5%;
-  /* padding: 6px 10px; */
   cursor: pointer;
 }
 
@@ -636,21 +634,19 @@ body.dark-mode .search-panel {
   background-color: var(--color-light-inner-bg);
   color: var(--color-dark-text);
   border: 2px solid var(--color-light-bg);
-  text-align: center;
   border-radius: 20px;
   margin-top: 5%;
   margin-bottom: 5%;
   padding-left: 3px;
   padding-right: 3px;
   cursor: pointer;
+  
 }
 
 .region-countries {
-  max-height: 200px;
   overflow-y: auto;
   margin-top: 8px;
-  padding-right: 5px;
-
+  text-wrap: wrap;
 }
 
 
@@ -664,3 +660,10 @@ body.dark-mode .search-panel {
 }
 
 
+
+.countries-scrollable-container {
+  width: 80%;
+  height: 80vh;
+  overflow-y: auto;
+  padding: 10px;
+}

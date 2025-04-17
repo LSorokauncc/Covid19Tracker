@@ -202,16 +202,11 @@ const Search = () => {
             <div className="error-countries">{error}</div>
           ) : (
             regions.map((region) => (
-              <div key={region.name} className="region-section">
-                <h2><div 
-                  className="region-header"
-                  onClick={() => toggleRegion(region.name)}
-                >
-                  <span className="region-name">{region.name}</span>
-                  <span className="region-count">({region.countries.length})</span>
-                </div></h2>
-
-                
+              <div key={region.name} className="region-section"
+              onClick={() => toggleRegion(region.name)}>
+                <h2>
+                  {region.name}
+                </h2>
                 {expandedRegions[region.name] && (
                   <div className="region-countries">
                     {region.countries.map((country) => (
