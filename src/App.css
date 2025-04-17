@@ -640,7 +640,8 @@ body.dark-mode .search-panel {
   border-radius: 20px;
   margin-top: 5%;
   margin-bottom: 5%;
-  padding: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
   cursor: pointer;
 }
 
