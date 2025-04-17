@@ -626,3 +626,28 @@ body.dark-mode .search-panel {
   border-radius: 20px;margin-top: 5%;
 }
 
+.region-countries {
+  max-height: 200px; /* Adjust height as needed */
+  overflow-y: auto;
+  margin-top: 8px;
+  padding-right: 5px; /* Prevent content from being hidden under scrollbar */
+
+}
+
+/* Style individual country items if needed */
+.country-item {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.country-item:hover {
+  background-color: #e8e8e8;
+}
+
+/* Highlight the selected country */
+.country-item.selected {
+  background-color: #d0ebff;
+  font-weight: bold;
+}
+
+
