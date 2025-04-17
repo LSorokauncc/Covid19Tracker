@@ -674,14 +674,12 @@ body.dark-mode .search-panel {
 
 .search-form {
   margin-top: 5%;
-  width: 78%;             /* Make it same width as buttons */
-  margin-left: auto;      /* Center it horizontally */
+  width: 78%;
+  margin-left: auto; 
   margin-right: auto;
   display: flex;
-  align-items: stretch;   /* Ensure input & button match height */
-  
-  border-radius: 6px;     /* Optional: to soften corners */
-  overflow: hidden;       /* Ensures no overlap/rounding bleed */
+  align-items: stretch; 
+  border-radius: 6px; 
 }
 
 .search-input {
