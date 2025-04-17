@@ -592,12 +592,12 @@ body.dark-mode .value {
 /* ================= Search Page ================= */
 /* page layout, styling for the main table */
 .page-layout {
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
   display: grid;
-  grid-template-columns: .25fr 1fr;
+  grid-template-columns: 20% 60%;
   padding: 3rem;
-  gap: 20rem;
+  gap: 15%;
   box-sizing: border-box;
   color: var(--color-light-bg);
   text-align: center;
