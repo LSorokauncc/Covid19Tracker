@@ -592,8 +592,8 @@ body.dark-mode .value {
 /* ================= Search Page ================= */
 /* page layout, styling for the main table */
 .page-layout {
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
   display: grid;
   grid-template-columns: 20% 60%;
   padding: 3rem;
