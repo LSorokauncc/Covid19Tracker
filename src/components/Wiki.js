@@ -7,7 +7,7 @@ const Wiki = () => {
       short:
         '2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. It has since spread worldwide, leading to an ongoing pandemic.',
       full: `
-        What is COVID19?
+What is COVID19?
 2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. It has since spread worldwide, leading to an ongoing pandemic.
 
 What are the symptoms?
@@ -21,9 +21,9 @@ At least a third of the people who are infected with the virus remain asymptomat
     {
       title: 'How do I get infected?',
       short:
-        'The virus spreads mainly when an infected person is in close contact with another person. Small droplets and aerosols containing the virus can spread from an infected persons nose and mouth as they breathe, cough, sneeze, sing, or speak. ',
+        'The virus spreads mainly when an infected person is in close contact with another person. Small droplets and aerosols containing the virus can spread from an infected persons nose and mouth as they breathe, cough, sneeze, sing, or speak.',
       full: `
-        The virus spreads mainly when an infected person is in close contact with another person.
+The virus spreads mainly when an infected person is in close contact with another person.
 
 Small droplets and aerosols containing the virus can spread from an infected person's nose and mouth as they breathe, cough, sneeze, sing, or speak. Other people are infected if the virus gets into their mouth, nose or eyes. The virus may also spread via contaminated surfaces, although this is not thought to be the main route of transmission.
 
@@ -35,7 +35,7 @@ A person who is infected can transmit the virus to others up to two days before 
       short:
         'The best way to get a coronavirus test is to contact your health care provider. You may also visit your state or local health departments website to look for the latest local information on testing.',
       full: `
-        How do I get tested?
+How do I get tested?
 The best way to get a coronavirus test is to contact your health care provider. You may also visit your state or local health department's website to look for the latest local information on testing. Many pharmacies, urgent care centers, and community health clinics also offer COVID-19 testing, often with same-day results.
 
 Is a vaccine available?
@@ -45,13 +45,15 @@ As of January 2021, nine vaccines have been authorized by at least one national 
     {
       title: 'How can I protect myself?',
       short:
-        'Handwashing: 1. The CDC recommends that people wash hands often with soap and water for at least 20 seconds, especially after going to the toilet or when hands are visibly dirty. ',
+        'Handwashing: The CDC recommends that people wash hands often with soap and water for at least 20 seconds, especially after going to the toilet or when hands are visibly dirty.',
       full: `
-        How can I protect myself?
+How can I protect myself?
+
 Handwashing
 The CDC recommends that people wash hands often with soap and water for at least 20 seconds, especially after going to the toilet or when hands are visibly dirty.
 It further recommended using an alcohol-based hand sanitiser with at least 60% alcohol by volume (or 120 proof) when soap and water are not readily available.
 The WHO also advise people to avoid touching the eyes, nose, or mouth with unwashed hands.
+
 Social distancing
 Social distancing, also called “physical distancing,” means keeping a safe space between yourself and other people who are not from your household.
 To practice social or physical distancing, stay at least 6 feet (about 2 arm lengths) from other people who are not from your household in both indoor and outdoor spaces.
@@ -67,7 +69,7 @@ Only visit stores selling household essentials in person when you absolutely nee
     window.location.href = '/detail';
   };
 
-  // ============ CSS: Text + Layout Styles =============
+  // ============ Layout & Styles ============
   const containerStyle = {
     padding: '1rem',
     width: '100%',
@@ -100,7 +102,6 @@ Only visit stores selling household essentials in person when you absolutely nee
     borderRadius: '25px',
     padding: '1.5rem 2rem',
     boxShadow: '0 6px 12px rgba(0, 0, 0, 0.2)',
-    textAlign: 'left',
     border: '1px solid var(--box-border-color)',
     backgroundColor: 'var(--box-bg-color)',
     color: 'var(--box-text-color)',
@@ -139,25 +140,23 @@ Only visit stores selling household essentials in person when you absolutely nee
     transition: 'background-color 0.3s',
   };
 
-  // ============ CSS: Background Image Styles ============
-  const bacteriaStyle = {
+  const imageStyle = {
     position: 'absolute',
-    width: '120px',
-    opacity: 1, 
-    zIndex: 0,
+    opacity: 1,
     filter: 'brightness(1.5)',
     mixBlendMode: 'screen',
+    zIndex: 0,
   };
+
   return (
     <div className="content-wrapper" style={containerStyle}>
-      {/*  Background Images */}
-      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...bacteriaStyle, top: '5%', left: '-30px' }} />
-      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...bacteriaStyle, top: '35%', left: '-30px' }} />
-      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...bacteriaStyle, top: '65%', left: '-30px' }} />
-      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...bacteriaStyle, top: '25%', right: '-30px' }} />
-      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...bacteriaStyle, top: '60%', right: '-30px' }} />
+      {/* Background Bacteria Images */}
+      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...imageStyle, width: '120px', top: '5%', left: '-30px' }} />
+      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...imageStyle, width: '100px', top: '35%', left: '-30px' }} />
+      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...imageStyle, width: '140px', top: '65%', left: '-30px' }} />
+      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...imageStyle, width: '100px', top: '5%', right: '-20px' }} />
+      <img src={`${process.env.PUBLIC_URL}/covidbacteria.jpg`} alt="bacteria" style={{ ...imageStyle, width: '180px', bottom: '5%', right: '-40px' }} />
 
-      {/* Main Content */}
       <h2 style={headingStyle}>WIKI</h2>
       <div style={gridStyle}>
         {infoData.map((item, index) => (
