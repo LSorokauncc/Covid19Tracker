@@ -618,33 +618,45 @@ body.dark-mode .search-panel {
   border: 2px solid var(--color-light-bg);
 }
 
-.country-item{
+/* style for world wide box */
+.region-style{
   background-color: var(--color-light-inner-bg);
   color: var(--color-dark-text);
   border: 2px solid var(--color-light-bg);
   text-align: center;
-  border-radius: 20px;margin-top: 5%;
+  border-radius: 20px;
+  margin-top: 5%;
+  /* padding: 6px 10px; */
+  cursor: pointer;
+}
+
+/* drop down title (country title) */
+.region-section {
+  text-align: center;
+  background-color: var(--color-light-inner-bg);
+  color: var(--color-dark-text);
+  border: 2px solid var(--color-light-bg);
+  text-align: center;
+  border-radius: 20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 3px;
+  cursor: pointer;
 }
 
 .region-countries {
-  max-height: 200px; /* Adjust height as needed */
+  max-height: 200px;
   overflow-y: auto;
   margin-top: 8px;
-  padding-right: 5px; /* Prevent content from being hidden under scrollbar */
+  padding-right: 5px;
 
 }
 
-/* Style individual country items if needed */
-.country-item {
-  padding: 6px 10px;
-  cursor: pointer;
-}
 
 .country-item:hover {
   background-color: #e8e8e8;
 }
 
-/* Highlight the selected country */
 .country-item.selected {
   background-color: #d0ebff;
   font-weight: bold;

@@ -191,7 +191,7 @@ const Search = () => {
 
         <div className="countries-scrollable-container">
           <div 
-            className={`country-item worldwide ${selectedCountry === "all" ? 'selected' : ''}`}
+            className={`region-style worldwide ${selectedCountry === "all" ? 'selected' : ''}`}
             onClick={() => setSelectedCountry("all")}
           >
             <h2>Worldwide</h2>
@@ -209,9 +209,6 @@ const Search = () => {
                 >
                   <span className="region-name">{region.name}</span>
                   <span className="region-count">({region.countries.length})</span>
-                  <span className="dropdown-arrow">
-                    {expandedRegions[region.name] ? '▼' : '▶'}
-                  </span>
                 </div></h2>
 
                 
