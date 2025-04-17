@@ -21,13 +21,11 @@ const Map = () => {
 
       mapRef.current = map;
       
-      // Set up load event handler
       map.on("load", () => {
         mapInitializedRef.current = true;
         fetchAndDisplayData(map);
       });
-      
-      // If the map is already loaded when this runs, call immediately
+
       if (map.loaded()) {
         mapInitializedRef.current = true;
         fetchAndDisplayData(map);
@@ -58,9 +56,7 @@ const Map = () => {
           // Check if map is still valid
           if (!map || !map.getCanvas()) return;
 
-          // Always try-catch Mapbox operations to prevent unhandled errors
           try {
-            // Add or update source
             if (!map.getSource("covid-data")) {
               map.addSource("covid-data", {
                 type: "geojson",
@@ -70,7 +66,7 @@ const Map = () => {
               map.getSource("covid-data").setData(geoData);
             }
 
-            // Add heatmap layer if it doesn't exist
+            // Adds heatmap
             if (!map.getLayer("covid-heatmap")) {
               map.addLayer({
                 id: "covid-heatmap",
@@ -98,13 +94,12 @@ const Map = () => {
                     0.7, "rgb(227,26,28)",
                     1, "rgb(177,0,38)"
                   ],
-                  "heatmap-radius": 20,
-                  "heatmap-opacity": 0.6,
+                  "heatmap-radius": 30,
+                  "heatmap-opacity": 0.8,
                 },
               });
             }
 
-            // Add clickable layer if it doesn't exist
             if (!map.getLayer("covid-click-layer")) {
               map.addLayer({
                 id: "covid-click-layer",
@@ -117,7 +112,6 @@ const Map = () => {
                 },
               });
               
-              // Add click handler only once
               map.on("click", "covid-click-layer", (e) => {
                 if (e.features && e.features.length > 0) {
                   const iso = e.features[0].properties.iso2;
@@ -138,7 +132,7 @@ const Map = () => {
         .catch((err) => console.error("Error fetching COVID data:", err));
     };
 
-    // Start initialization if container exists
+    //initializes map
     if (mapContainerRef.current) {
       initializeMap();
     }
