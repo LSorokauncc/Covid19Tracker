@@ -141,7 +141,8 @@ const Search = () => {
     }
   };
 
-  const handleCountryClick = (countryCode) => {
+  const handleCountryClick = (e, countryCode) => {
+    e.stopPropagation(); // Prevent the region toggle from firing
     setSelectedCountry(countryCode);
   };
 
@@ -211,9 +212,9 @@ const Search = () => {
                   <div className="region-countries">
                     {region.countries.map((country) => (
                       <div 
-                        key={country.code}
-                        className={`country-item ${selectedCountry === country.code ? 'selected' : ''}`}
-                        onClick={() => handleCountryClick(country.code)}
+                      key={country.code}
+                      className={`country-item ${selectedCountry === country.code ? 'selected' : ''}`}
+                      onClick={(e) => handleCountryClick(e, country.code)}
                       >
                         {country.name}
                       </div>
@@ -227,10 +228,11 @@ const Search = () => {
       </div>
 
       <div className="country-data-panel">
+      <div className= "stats-table-outline">
         <div className="country-header">
-          <h2 className="country-title">
+          <h1 className="country-title">
             {getSelectedCountryName()}
-          </h2>
+          </h1>
         </div>
 
         {selectedCountry === "all" && !worldwideInfo ? (
@@ -275,6 +277,7 @@ const Search = () => {
           <div className="empty-state">Select a country to view COVID-19 data</div>
         )}
       </div>
+    </div>
     </div>
   );
 };

@@ -613,7 +613,6 @@ body.dark-mode .value {
   border-radius: 20px;
   width: 100%;
 }
-
 body.dark-mode .search-panel {
   background-color: var(--color-dark-inner-bg);
   color: var(--color-dark-text);
@@ -654,15 +653,13 @@ body.dark-mode .search-panel {
 
 
 .country-item:hover {
-  background-color: #e8e8e8;
+  background-color: var(--color-dark-inner-bg);
 }
 
 .country-item.selected {
-  background-color: #d0ebff;
-  font-weight: bold;
+  background-color: var(--color-dark-inner-bg);
+
 }
-
-
 
 .countries-scrollable-container {
   width: 80%;
@@ -699,5 +696,49 @@ body.dark-mode .search-panel {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  cursor: pointer;
+}
+
+.stats-table-outline {
+  background-color: var(--color-light-bg); /* main background color */
+  border: 2px solid var(--color-light-bg);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+body.dark-mode .stats-table-outline {
+  background-color: var(--color-dark-inner-bg);
+  border-color: var(--color-dark-text);
+  color: var(--color-dark-text);
+}
+
+.stats-table {
+  background-color: var(--color-light-inner-bg);
+}
+body.dark-mode .stats-table {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+
+.country-title {
+  background-color: var(--color-light-inner-bg);
+  color: var(--color-dark-text);
+  border: 2px solid var(--color-light-bg);
+  border-radius: 20px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+body.dark-mode .country-title {
+  background-color: var(--color-light-inner-bg);
+  color: var(--color-light-bg);
+  border-color: var(--color-dark-text);
+}
+
+
+.country-stats {
+  color: var(--color-dark-bg);
+}
+body.dark-mode .country-stats {
+  color: var(--color-dark-text);;
 }
