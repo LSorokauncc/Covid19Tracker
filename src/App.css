@@ -738,6 +738,7 @@ body.dark-mode .country-title {
 
 .country-stats {
   color: var(--color-dark-bg);
+  padding-bottom: 5%;
 }
 body.dark-mode .country-stats {
   color: var(--color-dark-text);;

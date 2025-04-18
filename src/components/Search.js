@@ -269,9 +269,7 @@ const Search = () => {
               </tbody>
             </table>
             
-            <div className="data-footer">
-              <p>Data source: disease.sh API</p>
-            </div>
+            
           </div>
         ) : (
           <div className="empty-state">Select a country to view COVID-19 data</div>
