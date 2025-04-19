@@ -1,4 +1,11 @@
-# Covid19Tracker Tracker
+# Covid19Tracker 
+
+## Team Members
+
+**Landon Soroka**
+**Fatima Tausif**
+**Leanne Abdin**
+**Mae Sandford**
 
 ## Features
 
@@ -6,7 +13,7 @@
 - **Dark Mode** (toggle UI theme)
 - **Compare regions with drop down menu**
 - **Search Bar** for country lookup
-- **Expandable WIKI Page** 
+- **Expandable card in WIKI Page** 
 
 ## Navigation Pages
 
@@ -17,7 +24,29 @@
 
 ## References
 
+- [Inspired by the original ncov2019.live]
 - [Mapbox Map component](https://docs.mapbox.com/mapbox-gl-js/guides/)
 - [Covid 19 API for worldwide info](https://disease.sh/v3/covid-19/all)
 - [Covid 19 API for each country info](https://disease.sh/v3/covid-19/countries)
 - [Covid 19 API for vaccination info](https://disease.sh/v3/covid-19/vaccine/coverage?lastdays=1&fullData=false)
+
+## Covid19 Tracker Structure
+
+src/
+├── components/
+│   ├── Search.js
+│   └── ... (other components if any)
+├── styles/
+│   └── styles.css
+├── App.js
+└── index.js
+
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
