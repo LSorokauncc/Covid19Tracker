@@ -378,12 +378,24 @@ body.dark-mode .value {
 /* ================= COMPARE PAGE ================= */
 .compare-container {
   display: flex;
+  flex: 1;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 2rem;
   padding: 2rem;
   align-items: center;
   color: #A1D5EB;
   text-align: center;
+  margin-top: 0;
+}
+
+.continent-details {
+  margin-bottom: 0; /* Remove unnecessary bottom margin */
+}
+
+body.dark-mode .compare-container {
+  background-color: #122D3A; 
+  color: var(--color-dark-text);
 }
 
 /* Styling for the "WORLD COVID-19 STATS" title */
@@ -396,6 +408,12 @@ body.dark-mode .value {
   margin-left: 3rem;
 }
 
+/* Styling for continent names in the "WORLD COVID-19 STATS" table */
+.stats-table td.continent-name {
+  color: #A1D5EB; 
+  font-weight: bold; 
+}
+
 .table-container {
   max-height: 450px;
   overflow-y: auto;
@@ -403,19 +421,30 @@ body.dark-mode .value {
   padding: 1.5rem;
   width: 100%;
   max-width: 1000px;
-  background-color: var(--color-light-inner-bg);
+  background-color: var(--color-light-bg); /* Light mode background */
   transition: background-color 0.3s ease;
-  border: 2px solid #A1D5EB;
+  border: 2px solid var(--color-light-inner-bg);
 }
 
+body.dark-mode .table-container {
+  background-color: var(--color-dark-inner-bg); /* Dark mode background */
+  border: 2px solid var(--color-dark-text);
+}
 
+/* Styling for the "SELECT A CONTINENT" message */
 .select-continent-message {
-  color: #A1D5EB; 
+  color: #122D3A; 
   font-size: 1rem; 
   text-align: center; 
   margin-top: 10px; 
+  font-weight: bold;
 }
 
+body.dark-mode .select-continent-message {
+  color: var(--color-dark-text);
+}
+
+/* Styling for the "WORLD COVID-19 STATS" table */
 .stats-table {
   width: 100%;
   border-collapse: collapse;
@@ -423,6 +452,7 @@ body.dark-mode .value {
   text-align: center;
 }
 
+/* Styling for the table header */
 .stats-table th,
 .stats-table td {
   padding: 0.8rem;
@@ -431,6 +461,7 @@ body.dark-mode .value {
   color: white;
 }
 
+/* Specific font colors for rows */
 .stats-table td:nth-child(2) {
   color: #5A9D64;
 }
@@ -441,12 +472,7 @@ body.dark-mode .value {
   color: #C8CA8C;
 }
 
-/* Styling for continent names in the "WORLD COVID-19 STATS" table */
-.stats-table td.continent-name {
-  color: #A1D5EB; 
-  font-weight: bold; 
-}
-
+/* Specific font colors for header cells */
 .stats-table th {
   background-color: var(--color-light-inner-bg);
   color: #A1D5EB;
@@ -463,15 +489,24 @@ body.dark-mode .value {
 
 /* Container for the compare tables */
 .compare-tables {
-  display: flex; 
-  justify-content: space-between; 
-  margin-top: 20px; 
-  gap: 20px; 
-  width: 100%; 
-  max-width: 1000px; 
-  margin-left: auto; 
-  margin-right: auto; 
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 60px;
+  background-color: inherit; /* Inherit background color from parent */
+  border-radius: 20px;
+  padding: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode support for compare tables */
+body.dark-mode .compare-tables {
+  background-color: inherit; /* Inherit dark mode background from parent */
 }
 
 /* Styling specifically for the "COMPARE" title */
@@ -486,7 +521,7 @@ body.dark-mode .value {
 /* Individual compare table styling */
 .compare-table {
   width: 45%; 
-  background-color: #122D3A; 
+  background-color: var(--color-light-bg); 
   border: 2px solid #A1D5EB; 
   border-radius: 10px; 
   padding: 20px; 
@@ -495,14 +530,25 @@ body.dark-mode .value {
   color: #122D3A; 
 }
 
+/* Dark mode support for individual compare tables */
+body.dark-mode .compare-table {
+  background-color: var(--color-dark-inner-bg); 
+  color: var(--color-dark-text);
+}
+
 /* Heading for each compare table */
 .compare-table h3 {
   margin-top: 1px;
   margin-bottom: 15px; 
   font-size: 1.2rem; 
-  color: #A1D5EB; 
-  border-bottom: 2px solid #A1D5EB; 
+  color: #122D3A; 
+  border-bottom: 2px solid #122D3A; 
   padding-bottom: 10px; 
+}
+
+body.dark-mode .compare-table h3 {
+  color: var(--color-dark-text);
+  border-bottom: 2px solid var(--color-dark-text);
 }
 
 /* Styling for continent buttons */
@@ -518,15 +564,32 @@ body.dark-mode .value {
   transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
+body.dark-mode .continent-button {
+  background-color: var(--color-dark-inner-bg); 
+  color: var(--color-dark-text);
+}
+
 .continent-button:hover {
   background-color: #122D3A; 
   color: #A1D5EB; 
 }
 
+body.dark-mode .continent-button:hover {
+  background-color: var(--body-text-color); 
+  color: var(--color-dark-inner-bg);
+}
+
+/* Active continent button styling */
 .continent-button.active {
   background-color: #122D3A; 
   color: #A1D5EB; 
   border: 2px solid #A1D5EB; 
+}
+
+/* Dark mode support for active continent button */
+body.dark-mode .continent-button.active {
+  background-color: var(--color-dark-text); 
+  color: var(--color-dark-inner-bg);
 }
 
 /* Table inside each compare table */
@@ -539,6 +602,11 @@ body.dark-mode .value {
   overflow: hidden; 
 }
 
+body.dark-mode .compare-stats-table {
+  border: 5px solid var(--color-dark-text);
+}
+
+/* Styling for table header and cells */
 .compare-stats-table th,
 .compare-stats-table td {
   border: 2px solid #A1D5EB; 
@@ -548,9 +616,21 @@ body.dark-mode .value {
   font-weight: bold;
 }
 
+/* Dark mode support for table header and cells */
+body.dark-mode .compare-stats-table th,
+body.dark-mode .compare-stats-table td {
+  color: var(--color-dark-text);
+}
+
+/* Specific font colors for header cells */
 .compare-stats-table th {
   background-color: #122D3A; 
   color: #A1D5EB; 
+}
+
+body.dark-mode .compare-stats-table th {
+  background-color: var(--color-dark-inner-bg);
+  color: var(--color-dark-text);
 }
 
 /* Specific font colors for rows */
@@ -559,14 +639,29 @@ body.dark-mode .value {
   background-color: #122D3A;
 }
 
+body.dark-mode .compare-stats-table tr:nth-child(1) td {
+  color: #5A9D64; 
+  background-color: var(--color-dark-inner-bg);
+}
+
 .compare-stats-table tr:nth-child(2) td {
   color: #BE3537; 
   background-color: #122D3A;
 }
 
+body.dark-mode .compare-stats-table tr:nth-child(2) td {
+  color: #BE3537; 
+  background-color: var(--color-dark-inner-bg);
+}
+
 .compare-stats-table tr:nth-child(3) td {
   color: #C8CA8C; 
   background-color: #122D3A;
+}
+
+body.dark-mode .compare-stats-table tr:nth-child(3) td {
+  color: #C8CA8C; 
+  background-color: var(--color-dark-inner-bg);
 }
 
 .compare-stats-table tr:nth-child(even) {
@@ -581,12 +676,19 @@ body.dark-mode .value {
 .page-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Full page height */
 }
 
 .content-wrapper {
-  flex: 1;
+  flex: 1; /* Allow the content to grow and fill the remaining space */
+  margin: 0; /* Remove unnecessary margins */
+  padding: 0; /* Remove unnecessary padding */
 }
+
+.continent-details {
+  margin-bottom: 0; /* Remove bottom margin to avoid gaps */
+}
+
 
 
 /* ================= Search Page ================= */
