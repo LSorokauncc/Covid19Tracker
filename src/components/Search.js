@@ -86,6 +86,7 @@ const Search = () => {
     fetchCountryData(selectedCountry);
   }, [selectedCountry]);
 
+  //gets all the data for the world
   const fetchWorldwideData = async () => {
     try {
       const response = await fetch("https://disease.sh/v3/covid-19/all");
@@ -141,11 +142,13 @@ const Search = () => {
     }
   };
 
+  //clicking country
   const handleCountryClick = (e, countryCode) => {
-    e.stopPropagation(); // Prevent the region toggle from firing
+    e.stopPropagation(); 
     setSelectedCountry(countryCode);
   };
 
+  //expanding region boxes
   const toggleRegion = (regionName) => {
     setExpandedRegions(prev => ({
       ...prev,
