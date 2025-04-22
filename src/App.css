@@ -714,6 +714,10 @@ body.dark-mode .compare-stats-table tr:nth-child(3) td {
   border: 2px solid var(--color-light-bg);
   border-radius: 20px;
   width: 100%;
+  height: fit-content;
+  justify-content: flex-start;
+  overflow-y: hidden;
+
 }
 body.dark-mode .search-panel {
   background-color: var(--color-dark-inner-bg);
@@ -765,9 +769,11 @@ body.dark-mode .search-panel {
 
 .countries-scrollable-container {
   width: 80%;
-  height: 80vh;
+  height: auto;
   overflow-y: auto;
   padding: 10px;
+  padding-bottom: 0;
+  margin-bottom: 0;
   
 }
 
